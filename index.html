@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Training Log</title>
 <link rel="manifest" href="manifest.json" />
 <meta name="theme-color" content="#1c1a18" />
@@ -759,6 +759,9 @@ function TweaksPanel({ tweaks, update }) {
 }
 
 function App() {
+  const isStandalone = window.matchMedia("(display-mode: standalone)").matches
+    || window.navigator.standalone === true;
+
   const [state, dispatch] = useReducer(reducer, { completions: INITIAL_COMPLETIONS });
 
   const [route, setRoute] = useStateApp(() => {
@@ -803,6 +806,23 @@ function App() {
     return <Dashboard state={state} dispatch={dispatch} navigate={navigate} />;
   };
 
+  // On a real installed device — no fake frame, fill the screen natively
+  if (isStandalone) {
+    return (
+      <div style={{
+        minHeight: "100vh", background: "var(--paper)",
+        paddingTop: "env(safe-area-inset-top)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+        ...cssVars,
+      }}>
+        <div style={{ paddingTop: 12 }}>
+          {renderScreen()}
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop browser — show the iPhone frame preview
   return (
     <div style={{
       minHeight: "100vh",

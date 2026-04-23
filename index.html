@@ -15,11 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   html, body { margin: 0; padding: 0; }
-  body {
-    font-family: "Geist", system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
+  body { font-family: "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
   #root { width: 100%; }
   button { font: inherit; }
   ::-webkit-scrollbar { width: 0; height: 0; }
@@ -32,93 +28,46 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-<!-- ═══════════════════════════════════ iOS FRAME ═══════════════════════════════════ -->
+<!-- ═══ iOS FRAME ═══ -->
 <script type="text/babel">
-function IOSStatusBar({ dark = false, time = '9:41' }) {
+function IOSStatusBar({ dark = false }) {
   const c = dark ? '#fff' : '#000';
   return (
-    <div style={{
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      padding: '21px 24px 19px', boxSizing: 'border-box',
-      position: 'relative', zIndex: 20, width: '100%',
-    }}>
-      <div style={{ flex: 1, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 1.5 }}>
-        <span style={{ fontFamily: '-apple-system, "SF Pro", system-ui', fontWeight: 590, fontSize: 17, lineHeight: '22px', color: c }}>{time}</span>
+    <div style={{ display:'flex', alignItems:'center', justifyContent:'center', padding:'21px 24px 19px', boxSizing:'border-box', position:'relative', zIndex:20, width:'100%' }}>
+      <div style={{ flex:1, height:22, display:'flex', alignItems:'center', justifyContent:'center' }}>
+        <span style={{ fontFamily:'-apple-system,"SF Pro",system-ui', fontWeight:590, fontSize:17, lineHeight:'22px', color:c }}>9:41</span>
       </div>
-      <div style={{ flex: 1, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, paddingTop: 1, paddingRight: 1 }}>
-        <svg width="19" height="12" viewBox="0 0 19 12">
-          <rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill={c}/>
-          <rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill={c}/>
-          <rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill={c}/>
-          <rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill={c}/>
-        </svg>
-        <svg width="17" height="12" viewBox="0 0 17 12">
-          <path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill={c}/>
-          <path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill={c}/>
-          <circle cx="8.5" cy="10.5" r="1.5" fill={c}/>
-        </svg>
-        <svg width="27" height="13" viewBox="0 0 27 13">
-          <rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke={c} strokeOpacity="0.35" fill="none"/>
-          <rect x="2" y="2" width="20" height="9" rx="2" fill={c}/>
-          <path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill={c} fillOpacity="0.4"/>
-        </svg>
+      <div style={{ flex:1, height:22, display:'flex', alignItems:'center', justifyContent:'center', gap:7 }}>
+        <svg width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill={c}/><rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill={c}/><rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill={c}/><rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill={c}/></svg>
+        <svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill={c}/><path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill={c}/><circle cx="8.5" cy="10.5" r="1.5" fill={c}/></svg>
+        <svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke={c} strokeOpacity="0.35" fill="none"/><rect x="2" y="2" width="20" height="9" rx="2" fill={c}/><path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill={c} fillOpacity="0.4"/></svg>
       </div>
     </div>
   );
 }
-
-function IOSDevice({ children, width = 390, height = 844, dark = false }) {
+function IOSDevice({ children, width=390, height=844, dark=false }) {
   return (
-    <div style={{
-      width, height, borderRadius: 48, overflow: 'hidden',
-      position: 'relative', background: dark ? '#000' : '#F2F2F7',
-      boxShadow: '0 40px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.12)',
-      WebkitFontSmoothing: 'antialiased',
-    }}>
-      <div style={{
-        position: 'absolute', top: 11, left: '50%', transform: 'translateX(-50%)',
-        width: 126, height: 37, borderRadius: 24, background: '#000', zIndex: 50,
-      }} />
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10 }}>
-        <IOSStatusBar dark={dark} />
+    <div style={{ width, height, borderRadius:48, overflow:'hidden', position:'relative', background:dark?'#000':'#F2F2F7', boxShadow:'0 40px 80px rgba(0,0,0,0.18),0 0 0 1px rgba(0,0,0,0.12)', WebkitFontSmoothing:'antialiased' }}>
+      <div style={{ position:'absolute', top:11, left:'50%', transform:'translateX(-50%)', width:126, height:37, borderRadius:24, background:'#000', zIndex:50 }} />
+      <div style={{ position:'absolute', top:0, left:0, right:0, zIndex:10 }}><IOSStatusBar dark={dark} /></div>
+      <div style={{ height:'100%', display:'flex', flexDirection:'column' }}>
+        <div style={{ flex:1, overflow:'auto' }}>{children}</div>
       </div>
-      <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ flex: 1, overflow: 'auto' }}>{children}</div>
-      </div>
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 60,
-        height: 34, display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
-        paddingBottom: 8, pointerEvents: 'none',
-      }}>
-        <div style={{ width: 139, height: 5, borderRadius: 100, background: dark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.25)' }} />
+      <div style={{ position:'absolute', bottom:0, left:0, right:0, zIndex:60, height:34, display:'flex', justifyContent:'center', alignItems:'flex-end', paddingBottom:8, pointerEvents:'none' }}>
+        <div style={{ width:139, height:5, borderRadius:100, background:dark?'rgba(255,255,255,0.7)':'rgba(0,0,0,0.25)' }} />
       </div>
     </div>
   );
 }
-
 Object.assign(window, { IOSDevice, IOSStatusBar });
 </script>
 
-<!-- ═══════════════════════════════════ DATA ═══════════════════════════════════ -->
+<!-- ═══ DATA ═══ -->
 <script type="text/babel">
-const MUSCLE_GROUPS = ["legs", "back", "chest", "arms", "shoulders", "abs"];
-
-const WEEKLY_TARGETS = { legs: 7, back: 5, chest: 3, arms: 2, shoulders: 2, abs: 2 };
-const TOTAL_TARGET = 21;
-
-const MG_COLORS = {
-  legs:      "oklch(0.62 0.13 145)",
-  back:      "oklch(0.52 0.15 258)",
-  chest:     "oklch(0.58 0.17 28)",
-  arms:      "oklch(0.56 0.15 305)",
-  shoulders: "oklch(0.68 0.14 70)",
-  abs:       "oklch(0.66 0.10 205)",
-};
-
-const MG_LABEL = {
-  legs: "Legs", back: "Back", chest: "Chest",
-  arms: "Arms", shoulders: "Shoulders", abs: "Abs",
-};
+const MUSCLE_GROUPS = ["legs","back","chest","arms","shoulders","abs"];
+const MG_COLORS = { legs:"oklch(0.62 0.13 145)", back:"oklch(0.52 0.15 258)", chest:"oklch(0.58 0.17 28)", arms:"oklch(0.56 0.15 305)", shoulders:"oklch(0.68 0.14 70)", abs:"oklch(0.66 0.10 205)" };
+const MG_LABEL  = { legs:"Legs", back:"Back", chest:"Chest", arms:"Arms", shoulders:"Shoulders", abs:"Abs" };
+const DAY_COLORS = ["oklch(0.52 0.15 258)","oklch(0.55 0.14 145)","oklch(0.58 0.17 28)","oklch(0.72 0.14 85)"];
 
 const EXERCISES = {
   squat:            { id:"squat",            name:"Back Squat",           group:"legs" },
@@ -128,7 +77,7 @@ const EXERCISES = {
   barbell_squats:   { id:"barbell_squats",   name:"Front Squat",          group:"legs" },
   barbell_lunges:   { id:"barbell_lunges",   name:"Barbell Lunges",       group:"legs" },
   lying_leg_curls:  { id:"lying_leg_curls",  name:"Lying Leg Curls",      group:"legs" },
-  calf_raises:      { id:"calf_raises",      name:"Standing Calf Raises", group:"legs" },
+  calf_raises:      { id:"calf_raises",      name:"Calf Raises",          group:"legs" },
   adductors:        { id:"adductors",        name:"Adductor Machine",     group:"legs" },
   calves_seated:    { id:"calves_seated",    name:"Seated Calf Raises",   group:"legs" },
   lat_pulldown:     { id:"lat_pulldown",     name:"Lat Pulldown",         group:"back" },
@@ -153,63 +102,66 @@ const EXERCISES = {
   abs:              { id:"abs",              name:"Abs",                  group:"abs" },
 };
 
-const DEFAULT_PLAN = [
-  ["squat", "lat_pulldown", "leg_extension", "weighted_pullups", "abs"],
-  ["bench_press", "deadlift", "db_row", "skullcrusher", "hammer_curl"],
-  ["barbell_squats", "weighted_dips", "leg_press", "adductors", "calves_seated"],
-  ["deadlift", "bench_central", "abs", "military_press", "lateral_raises"],
-];
+const SPLITS = {
+  fullBody: {
+    label: "Full Body",
+    days: [
+      { title:"Full Body A", sub:"Legs & pull compound",   main:["squat","weighted_pullups"],    other:["leg_extension","lat_pulldown","abs"] },
+      { title:"Full Body B", sub:"Press & row",             main:["bench_press","db_row"],         other:["military_press","skullcrusher","hammer_curl"] },
+      { title:"Full Body C", sub:"Squat & push",            main:["barbell_squats","weighted_dips"],other:["leg_press","adductors","calves_seated"] },
+      { title:"Full Body D", sub:"Hinge & press",           main:["deadlift","bench_central"],     other:["abs","lateral_raises","ez_bar_curls","triceps_pushdowns"] },
+    ],
+  },
+  pushPull: {
+    label: "Push / Pull",
+    days: [
+      { title:"Pull A", sub:"Back & biceps",           main:["weighted_pullups","deadlift"],    other:["lat_pulldown","db_row","hammer_curl"] },
+      { title:"Push A", sub:"Chest & shoulders",       main:["bench_press","military_press"],   other:["weighted_dips","lateral_raises","triceps_pushdowns"] },
+      { title:"Pull B", sub:"Back & arms",             main:["deadlift","seated_cable_rows"],   other:["pullups_bw","rear_delt_fly","ez_bar_curls"] },
+      { title:"Push B", sub:"Press & chest",           main:["incline_bench","weighted_dips"],  other:["cable_crossovers","face_pulls","skullcrusher"] },
+    ],
+  },
+  upperLower: {
+    label: "Upper / Lower",
+    days: [
+      { title:"Upper A", sub:"Horizontal push & pull", main:["bench_press","weighted_pullups"], other:["military_press","db_row","lateral_raises"] },
+      { title:"Lower A", sub:"Quad focus",             main:["squat","leg_press"],              other:["leg_extension","calf_raises","adductors"] },
+      { title:"Upper B", sub:"Vertical press & pull",  main:["military_press","lat_pulldown"],  other:["incline_bench","seated_cable_rows","skullcrusher","hammer_curl"] },
+      { title:"Lower B", sub:"Posterior chain",        main:["deadlift","hack_squat"],          other:["lying_leg_curls","calves_seated","abs"] },
+    ],
+  },
+};
 
-const DAY_FOCUS = [
-  { title: "Legs & Pull",   sub: "Posterior chain, lats" },
-  { title: "Press & Arms",  sub: "Push volume, hinge" },
-  { title: "Leg Volume",    sub: "Quads, calves, depth" },
-  { title: "Finish Block",  sub: "Pull, press, core" },
-];
+function exerciseById(id) { return EXERCISES[id] ?? { id, name:id, group:"legs" }; }
 
-const INITIAL_COMPLETIONS = [
-  { day: 1, slot: 0, id: "squat" },
-  { day: 1, slot: 1, id: "lat_pulldown" },
-  { day: 1, slot: 2, id: "leg_extension" },
-  { day: 1, slot: 3, id: "weighted_pullups" },
-  { day: 1, slot: 4, id: "abs" },
-  { day: 2, slot: 0, id: "bench_press" },
-  { day: 2, slot: 1, id: "deadlift" },
-];
-
-function exerciseById(id) {
-  return EXERCISES[id] ?? { id, name: id, group: "legs" };
+function getWeeklyTargets(splitKey) {
+  const t = {}; MUSCLE_GROUPS.forEach(g => t[g] = 0);
+  SPLITS[splitKey].days.forEach(d => [...d.main, ...d.other].forEach(id => {
+    const ex = exerciseById(id); if (ex.group) t[ex.group]++;
+  }));
+  return t;
 }
 
-Object.assign(window, {
-  MUSCLE_GROUPS, WEEKLY_TARGETS, TOTAL_TARGET, MG_COLORS, MG_LABEL,
-  EXERCISES, DEFAULT_PLAN, DAY_FOCUS, INITIAL_COMPLETIONS, exerciseById,
-});
+Object.assign(window, { MUSCLE_GROUPS, MG_COLORS, MG_LABEL, DAY_COLORS, EXERCISES, SPLITS, exerciseById, getWeeklyTargets });
 </script>
 
-<!-- ═══════════════════════════════════ COMPONENTS ═══════════════════════════════════ -->
+<!-- ═══ COMPONENTS ═══ -->
 <script type="text/babel">
-const { useMemo } = React;
-
-function RingStack({ progress, size = 260, strokeWidth = 9, gap = 3, startAngle = -90 }) {
-  const center = size / 2;
-  const outerR = center - strokeWidth / 2 - 2;
+function RingStack({ progress, targets, size=260, strokeWidth=9, gap=3 }) {
+  const center = size / 2, outerR = center - strokeWidth / 2 - 2;
+  const total = Object.values(targets).reduce((a,b)=>a+b,0) || 1;
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ display: "block" }}>
-      {MUSCLE_GROUPS.map((g, i) => {
-        const r = outerR - i * (strokeWidth + gap);
-        const c = 2 * Math.PI * r;
-        const done = Math.min(1, (progress[g] || 0) / WEEKLY_TARGETS[g]);
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ display:"block" }}>
+      {MUSCLE_GROUPS.map((g,i) => {
+        const r = outerR - i*(strokeWidth+gap);
+        const c = 2*Math.PI*r;
+        const done = Math.min(1, (progress[g]||0) / Math.max(1, targets[g]||1));
         return (
           <g key={g}>
-            <circle cx={center} cy={center} r={r} fill="none" stroke="currentColor" strokeOpacity="0.08" strokeWidth={strokeWidth} />
-            <circle
-              cx={center} cy={center} r={r} fill="none"
-              stroke={MG_COLORS[g]} strokeWidth={strokeWidth} strokeLinecap="round"
-              strokeDasharray={`${c * done} ${c}`}
-              transform={`rotate(${startAngle} ${center} ${center})`}
-              style={{ transition: "stroke-dasharray 700ms cubic-bezier(.2,.8,.2,1)" }}
-            />
+            <circle cx={center} cy={center} r={r} fill="none" stroke="currentColor" strokeOpacity="0.08" strokeWidth={strokeWidth}/>
+            <circle cx={center} cy={center} r={r} fill="none" stroke={MG_COLORS[g]} strokeWidth={strokeWidth} strokeLinecap="round"
+              strokeDasharray={`${c*done} ${c}`} transform={`rotate(-90 ${center} ${center})`}
+              style={{ transition:"stroke-dasharray 700ms cubic-bezier(.2,.8,.2,1)" }}/>
           </g>
         );
       })}
@@ -217,319 +169,204 @@ function RingStack({ progress, size = 260, strokeWidth = 9, gap = 3, startAngle 
   );
 }
 
-function GroupKey({ progress, style = {} }) {
+function GroupKey({ progress, targets }) {
   return (
-    <div style={{
-      display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "6px 14px",
-      fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: 0.06,
-      textTransform: "uppercase", ...style,
-    }}>
-      {MUSCLE_GROUPS.map((g) => {
-        const done = progress[g] || 0;
-        const target = WEEKLY_TARGETS[g];
-        return (
-          <div key={g} style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--ink-60)" }}>
-            <span style={{ width: 6, height: 6, borderRadius: 999, background: MG_COLORS[g], flexShrink: 0 }} />
-            <span style={{ flex: 1, color: "var(--ink)" }}>{MG_LABEL[g]}</span>
-            <span style={{ color: "var(--ink-60)", fontVariantNumeric: "tabular-nums" }}>
-              {done}<span style={{ opacity: 0.5 }}>/{target}</span>
-            </span>
-          </div>
-        );
-      })}
+    <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:"6px 14px", fontFamily:"var(--font-mono)", fontSize:10.5, letterSpacing:0.06, textTransform:"uppercase" }}>
+      {MUSCLE_GROUPS.map(g => (
+        <div key={g} style={{ display:"flex", alignItems:"center", gap:6, color:"var(--ink-60)" }}>
+          <span style={{ width:6, height:6, borderRadius:999, background:MG_COLORS[g], flexShrink:0 }}/>
+          <span style={{ flex:1, color:"var(--ink)" }}>{MG_LABEL[g]}</span>
+          <span style={{ fontVariantNumeric:"tabular-nums" }}>{progress[g]||0}<span style={{ opacity:0.5 }}>/{targets[g]||0}</span></span>
+        </div>
+      ))}
     </div>
   );
 }
 
-function ExerciseRow({ ex, checked, onToggle, dashed = false }) {
+function ExerciseRow({ ex, checked, onToggle, dashed=false, isMain=false }) {
   return (
     <button onClick={onToggle} style={{
-      width: "100%", textAlign: "left", padding: "14px 2px",
-      background: "transparent", border: "none",
+      width:"100%", textAlign:"left", padding:"13px 2px", background:"transparent", border:"none",
       borderTop: dashed ? "1px dashed var(--rule)" : "1px solid var(--rule)",
-      cursor: "pointer", display: "flex", alignItems: "center", gap: 14,
-      fontFamily: "var(--font-body)",
+      cursor:"pointer", display:"flex", alignItems:"center", gap:14, fontFamily:"var(--font-body)",
     }}>
       <span style={{
-        width: 22, height: 22, borderRadius: 5,
-        border: checked ? "none" : "1.5px solid var(--ink-30)",
+        width:22, height:22, borderRadius:5, flexShrink:0, transition:"all 180ms",
+        border: checked ? "none" : `1.5px solid ${isMain ? MG_COLORS[ex.group] : "var(--ink-30)"}`,
         background: checked ? MG_COLORS[ex.group] : "transparent",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        flexShrink: 0, transition: "all 180ms",
+        display:"flex", alignItems:"center", justifyContent:"center",
       }}>
-        {checked && (
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M2 6.5l2.5 2.5L10 3.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        )}
+        {checked && <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
       </span>
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div style={{ flex:1, minWidth:0 }}>
         <div style={{
-          fontFamily: "var(--font-display)", fontSize: 19, letterSpacing: -0.2,
+          fontFamily:"var(--font-display)", fontSize: isMain ? 21 : 18, letterSpacing:-0.2,
           color: checked ? "var(--ink-60)" : "var(--ink)",
-          textDecoration: checked ? "line-through" : "none",
-          textDecorationThickness: "1px", lineHeight: 1.1,
+          textDecoration: checked ? "line-through" : "none", textDecorationThickness:"1px", lineHeight:1.1,
+          fontWeight: isMain ? 400 : 400,
         }}>{ex.name}</div>
-        <div style={{
-          fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: 0.08,
-          color: "var(--ink-60)", textTransform: "uppercase", marginTop: 3,
-          display: "flex", gap: 10, alignItems: "center",
-        }}>
-          <span style={{ color: MG_COLORS[ex.group] }}>◆ {MG_LABEL[ex.group]}</span>
-          {dashed && <span style={{ color: "var(--ink-30)" }}>· ADDED</span>}
+        <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.08, color:"var(--ink-60)", textTransform:"uppercase", marginTop:3, display:"flex", gap:8, alignItems:"center" }}>
+          <span style={{ color:MG_COLORS[ex.group] }}>◆ {MG_LABEL[ex.group]}</span>
+          {isMain && <span style={{ color:"var(--ink-30)", letterSpacing:0.12 }}>· MAIN</span>}
+          {dashed && <span style={{ color:"var(--ink-30)" }}>· ADDED</span>}
         </div>
       </div>
     </button>
   );
 }
 
-function Rule({ label, style = {} }) {
+function Rule({ label, style={} }) {
   return (
-    <div style={{
-      display: "flex", alignItems: "center", gap: 10,
-      fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.14,
-      textTransform: "uppercase", color: "var(--ink-60)",
-      margin: "24px 0 12px", ...style,
-    }}>
-      <span style={{ whiteSpace: "nowrap" }}>{label}</span>
-      <span style={{ flex: 1, height: 1, background: "var(--rule)" }} />
+    <div style={{ display:"flex", alignItems:"center", gap:10, fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.14, textTransform:"uppercase", color:"var(--ink-60)", margin:"20px 0 10px", ...style }}>
+      <span style={{ whiteSpace:"nowrap" }}>{label}</span>
+      <span style={{ flex:1, height:1, background:"var(--rule)" }}/>
     </div>
   );
 }
 
-function DayCard({ day, focus, completed, total, isCurrent, isDone, onClick }) {
-  const pct = total ? completed / total : 0;
+function DayCard({ day, plan, dayColor, completed, total, isCurrent, isDone, onClick }) {
+  const pct = total ? completed/total : 0;
   return (
     <button onClick={onClick} style={{
-      textAlign: "left", cursor: "pointer",
+      textAlign:"left", cursor:"pointer",
       background: isCurrent ? "var(--ink)" : "transparent",
       color: isCurrent ? "var(--paper)" : "var(--ink)",
       border: isCurrent ? "1px solid var(--ink)" : "1px solid var(--rule)",
-      borderRadius: 0, padding: "14px 14px 16px",
-      display: "flex", flexDirection: "column", gap: 4,
-      fontFamily: "var(--font-body)",
+      borderRadius:0, padding:"14px 14px 16px",
+      display:"flex", flexDirection:"column", gap:4, fontFamily:"var(--font-body)",
     }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <div>
-          <div style={{
-            fontFamily: "var(--font-mono)", fontSize: 9.5, letterSpacing: 0.18,
-            textTransform: "uppercase",
-            color: isCurrent ? "rgba(255,255,255,0.6)" : "var(--ink-60)",
-          }}>Day</div>
-          <div style={{
-            fontFamily: "var(--font-display)", fontSize: 34, lineHeight: 1,
-            letterSpacing: -0.03, fontVariantNumeric: "tabular-nums",
-          }}>{day}</div>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start" }}>
+        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+          <span style={{ width:10, height:10, borderRadius:999, background:dayColor, flexShrink:0 }}/>
+          <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.18, textTransform:"uppercase", color: isCurrent?"rgba(255,255,255,0.6)":"var(--ink-60)" }}>Day {day}</div>
         </div>
-        {isDone && (
-          <span style={{
-            fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: 0.18,
-            textTransform: "uppercase",
-            color: isCurrent ? "rgba(255,255,255,0.7)" : "var(--accent)",
-            border: `1px solid ${isCurrent ? "rgba(255,255,255,0.35)" : "var(--accent)"}`,
-            borderRadius: 2, padding: "2px 5px",
-          }}>Done</span>
-        )}
-        {!isDone && isCurrent && (
-          <span style={{
-            fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: 0.18,
-            textTransform: "uppercase", color: "var(--paper)",
-            border: "1px solid rgba(255,255,255,0.4)", borderRadius: 2, padding: "2px 5px",
-          }}>Today</span>
-        )}
+        {isDone && <span style={{ fontFamily:"var(--font-mono)", fontSize:9, letterSpacing:0.18, textTransform:"uppercase", color: isCurrent?"rgba(255,255,255,0.7)":"var(--accent)", border:`1px solid ${isCurrent?"rgba(255,255,255,0.35)":"var(--accent)"}`, borderRadius:2, padding:"2px 5px" }}>Done</span>}
+        {!isDone && isCurrent && <span style={{ fontFamily:"var(--font-mono)", fontSize:9, letterSpacing:0.18, textTransform:"uppercase", color:"var(--paper)", border:"1px solid rgba(255,255,255,0.4)", borderRadius:2, padding:"2px 5px" }}>Today</span>}
       </div>
-      <div style={{ fontFamily: "var(--font-display)", fontSize: 15, letterSpacing: -0.1, lineHeight: 1.15, marginTop: 8 }}>{focus.title}</div>
-      <div style={{
-        fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.08, textTransform: "uppercase",
-        color: isCurrent ? "rgba(255,255,255,0.6)" : "var(--ink-60)", marginTop: 2,
-      }}>{completed}/{total} · {Math.round(pct * 100)}%</div>
-      <div style={{ height: 2, background: isCurrent ? "rgba(255,255,255,0.18)" : "var(--rule)", marginTop: 10, position: "relative" }}>
-        <div style={{
-          position: "absolute", left: 0, top: 0, bottom: 0, width: `${pct * 100}%`,
-          background: isCurrent ? "var(--paper)" : "var(--accent)", transition: "width 400ms ease",
-        }} />
+      <div style={{ fontFamily:"var(--font-display)", fontSize:15, letterSpacing:-0.1, lineHeight:1.15, marginTop:6 }}>{plan.title}</div>
+      <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.08, textTransform:"uppercase", color: isCurrent?"rgba(255,255,255,0.6)":"var(--ink-60)", marginTop:2 }}>{plan.main.map(id=>exerciseById(id).name).join(" · ")}</div>
+      <div style={{ height:2, background: isCurrent?"rgba(255,255,255,0.18)":"var(--rule)", marginTop:10, position:"relative" }}>
+        <div style={{ position:"absolute", left:0, top:0, bottom:0, width:`${pct*100}%`, background: isCurrent?"var(--paper)":"var(--accent)", transition:"width 400ms ease" }}/>
       </div>
+      <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.08, textTransform:"uppercase", color: isCurrent?"rgba(255,255,255,0.5)":"var(--ink-60)", marginTop:2 }}>{completed}/{total} · {Math.round(pct*100)}%</div>
     </button>
   );
 }
 
-function TLButton({ children, onClick, variant = "ghost", style = {} }) {
-  const base = {
-    fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: 0.14,
-    textTransform: "uppercase", padding: "10px 14px",
-    border: "1px solid var(--ink)", borderRadius: 0,
-    cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8,
-    transition: "all 150ms",
-  };
-  const variants = {
-    ghost: { background: "transparent", color: "var(--ink)" },
-    solid: { background: "var(--ink)", color: "var(--paper)" },
-    accent: { background: "var(--accent)", color: "#fff", border: "1px solid var(--accent)" },
-  };
-  return <button onClick={onClick} style={{ ...base, ...variants[variant], ...style }}>{children}</button>;
-}
-
-Object.assign(window, { RingStack, GroupKey, ExerciseRow, Rule, DayCard, TLButton });
+Object.assign(window, { RingStack, GroupKey, ExerciseRow, Rule, DayCard });
 </script>
 
-<!-- ═══════════════════════════════════ SCREENS ═══════════════════════════════════ -->
+<!-- ═══ SCREENS ═══ -->
 <script type="text/babel">
 const { useState, useEffect } = React;
 
 function computeProgress(completions) {
-  const p = { legs:0, back:0, chest:0, arms:0, shoulders:0, abs:0 };
-  completions.forEach((c) => {
-    const ex = exerciseById(c.id);
-    p[ex.group] = (p[ex.group] || 0) + 1;
-  });
+  const p = {}; MUSCLE_GROUPS.forEach(g => p[g]=0);
+  completions.forEach(c => { const ex=exerciseById(c.id); if(ex.group) p[ex.group]++; });
   return p;
 }
 
+// ── Dashboard ──
 function Dashboard({ state, dispatch, navigate }) {
-  const { completions } = state;
-  const progress = computeProgress(completions);
-  const totalDone = Object.values(progress).reduce((a, b) => a + b, 0);
-
-  let currentDay = 4;
-  for (let d = 1; d <= 4; d++) {
-    const slots = DEFAULT_PLAN[d - 1];
-    const doneCount = completions.filter((c) => c.day === d && c.slot < 1000).length;
-    if (doneCount < slots.length) { currentDay = d; break; }
-  }
+  const { activeSplit, completions, completedDays } = state;
+  const splitData = SPLITS[activeSplit];
+  const splitCompletions = completions[activeSplit] || [];
+  const splitCompletedDays = completedDays[activeSplit] || [];
+  const progress = computeProgress(splitCompletions);
+  const targets = getWeeklyTargets(activeSplit);
+  const totalDone = Object.values(progress).reduce((a,b)=>a+b,0);
+  const totalTarget = Object.values(targets).reduce((a,b)=>a+b,0);
 
   const today = new Date();
   const weekday = ["SUN","MON","TUE","WED","THU","FRI","SAT"][today.getDay()];
-  const dateStr = `${weekday} · ${today.toLocaleDateString("en-US", { month: "short", day: "numeric" }).toUpperCase()}`;
+  const dateStr = `${weekday} · ${today.toLocaleDateString("en-US",{month:"short",day:"numeric"}).toUpperCase()}`;
 
-  const expectedPct = ((currentDay - 1) / 4) * 100;
-  const behind = MUSCLE_GROUPS.map((g) => {
-    const target = WEEKLY_TARGETS[g];
-    const pct = target ? (progress[g] / target) * 100 : 0;
-    const missing = Math.max(0, target - progress[g]);
-    if (missing === 0 || pct >= expectedPct) return null;
-    const todayExtras = new Set(
-      completions.filter((c) => c.day === currentDay && c.slot >= 1000).map((c) => c.id),
-    );
-    const pool = Object.values(EXERCISES)
-      .filter((ex) => ex.group === g && !todayExtras.has(ex.id))
-      .slice(0, 2);
-    return { group: g, missing, suggestions: pool };
-  }).filter(Boolean);
+  // Next day to do = first day not yet marked complete
+  let currentDay = splitData.days.length;
+  for (let i=0; i<splitData.days.length; i++) {
+    if (!splitCompletedDays.includes(i+1)) { currentDay = i+1; break; }
+  }
 
   return (
-    <div style={{ padding: "8px 24px 120px", fontFamily: "var(--font-body)", color: "var(--ink)" }}>
+    <div style={{ padding:"8px 24px 100px", fontFamily:"var(--font-body)", color:"var(--ink)" }}>
+
       {/* Masthead */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: 8 }}>
-        <div>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.18, textTransform: "uppercase", color: "var(--ink-60)" }}>{dateStr}</div>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 42, lineHeight: 0.95, letterSpacing: -0.035, marginTop: 10, fontWeight: 400 }}>
-            <span style={{ fontStyle: "italic" }}>Training</span> Log
-          </div>
+      <div style={{ paddingTop:8 }}>
+        <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)" }}>{dateStr}</div>
+        <div style={{ fontFamily:"var(--font-display)", fontSize:42, lineHeight:0.95, letterSpacing:-0.035, marginTop:10, fontWeight:400 }}>
+          <span style={{ fontStyle:"italic" }}>Training</span> Log
         </div>
+      </div>
+
+      {/* Split toggle */}
+      <div style={{ display:"flex", gap:6, marginTop:16 }}>
+        {Object.entries(SPLITS).map(([key, s]) => (
+          <button key={key} onClick={() => dispatch({ type:"SET_SPLIT", split:key })}
+            style={{
+              flex:1, fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.12,
+              textTransform:"uppercase", padding:"9px 4px",
+              background: activeSplit===key ? "var(--ink)" : "transparent",
+              color: activeSplit===key ? "var(--paper)" : "var(--ink)",
+              border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer",
+              transition:"all 150ms",
+            }}>{s.label}</button>
+        ))}
       </div>
 
       {/* Ring Stack */}
-      <div style={{ marginTop: 28, position: "relative", display: "flex", justifyContent: "center" }}>
-        <div style={{ position: "relative", width: 260, height: 260 }}>
-          <RingStack progress={progress} size={260} strokeWidth={9} gap={3} />
-          <div style={{
-            position: "absolute", inset: 0, display: "flex",
-            flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center",
-          }}>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 9.5, letterSpacing: 0.2, textTransform: "uppercase", color: "var(--ink-60)" }}>Week Volume</div>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: 68, lineHeight: 0.85, letterSpacing: -0.05, marginTop: 8, fontVariantNumeric: "tabular-nums", fontWeight: 400 }}>{totalDone}</div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.12, color: "var(--ink-60)", marginTop: 2 }}>of {TOTAL_TARGET} sets</div>
+      <div style={{ marginTop:28, display:"flex", justifyContent:"center" }}>
+        <div style={{ position:"relative", width:260, height:260 }}>
+          <RingStack progress={progress} targets={targets} size={260} strokeWidth={9} gap={3}/>
+          <div style={{ position:"absolute", inset:0, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center" }}>
+            <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.2, textTransform:"uppercase", color:"var(--ink-60)" }}>Week Volume</div>
+            <div style={{ fontFamily:"var(--font-display)", fontSize:68, lineHeight:0.85, letterSpacing:-0.05, marginTop:8, fontVariantNumeric:"tabular-nums", fontWeight:400 }}>{totalDone}</div>
+            <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.12, color:"var(--ink-60)", marginTop:2 }}>of {totalTarget} sets</div>
           </div>
         </div>
       </div>
 
-      {/* Group Key */}
-      <div style={{ marginTop: 22 }}>
-        <GroupKey progress={progress} />
-      </div>
+      {/* Group key */}
+      <div style={{ marginTop:20 }}><GroupKey progress={progress} targets={targets}/></div>
 
-      {/* 4-day strip */}
-      <Rule label={`Four-Day Split · ${currentDay <= 4 ? "Day " + currentDay + " on deck" : "Complete"}`} />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-        {[1,2,3,4].map((d) => {
-          const slots = DEFAULT_PLAN[d-1];
-          const completed = completions.filter((c) => c.day === d && c.slot < 1000).length;
-          const extras = completions.filter((c) => c.day === d && c.slot >= 1000).length;
-          const isCurrent = d === currentDay;
-          const isDone = completed >= slots.length;
+      {/* Day cards */}
+      <Rule label={`${splitData.label} · ${splitCompletedDays.length < splitData.days.length ? "Day "+currentDay+" on deck" : "Week Complete"}`}/>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+        {splitData.days.map((plan, i) => {
+          const d = i+1;
+          const dayComp = splitCompletions.filter(c=>c.day===d && c.slot<1000).length;
+          const dayExtra = splitCompletions.filter(c=>c.day===d && c.slot>=1000).length;
+          const total = plan.main.length + plan.other.length + dayExtra;
+          const isDone = splitCompletedDays.includes(d);
           return (
-            <DayCard key={d} day={d} focus={DAY_FOCUS[d-1]}
-              completed={completed + extras} total={slots.length + extras}
-              isCurrent={isCurrent} isDone={isDone}
-              onClick={() => navigate({ screen: "day", dayId: d })}
-            />
+            <DayCard key={d} day={d} plan={plan} dayColor={DAY_COLORS[i]}
+              completed={dayComp+dayExtra} total={total}
+              isCurrent={d===currentDay && !isDone} isDone={isDone}
+              onClick={() => navigate({ screen:"day", dayId:d })}/>
           );
         })}
       </div>
 
-      {/* Catch-up */}
-      {behind.length > 0 && (
-        <>
-          <Rule label="Catch-Up · Behind Pace" />
-          <div style={{ border: "1px solid var(--accent)", background: "var(--accent-tint)", padding: "14px 14px 4px" }}>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: 17, letterSpacing: -0.15, lineHeight: 1.2 }}>
-              You're trailing on <span style={{ color: "var(--accent)", fontStyle: "italic" }}>
-                {behind.map((b,i) => (i === behind.length-1 && behind.length > 1 ? "and " : "") + MG_LABEL[b.group].toLowerCase()).join(", ")}
-              </span>. Tap to add to Day {currentDay}.
-            </div>
-            {behind.map((b) => (
-              <div key={b.group} style={{ marginTop: 12, paddingTop: 10, borderTop: "1px dashed var(--rule)" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.12, textTransform: "uppercase", color: "var(--ink)", display: "flex", alignItems: "center", gap: 6 }}>
-                    <span style={{ width:6, height:6, borderRadius:999, background: MG_COLORS[b.group] }} />
-                    {MG_LABEL[b.group]}
-                  </div>
-                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.1, color: "var(--ink-60)" }}>+{b.missing} needed</div>
-                </div>
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", paddingBottom: 10 }}>
-                  {b.suggestions.map((ex) => (
-                    <button key={ex.id}
-                      onClick={() => dispatch({ type: "ADD_EXTRA", day: currentDay, id: ex.id })}
-                      style={{
-                        fontFamily: "var(--font-body)", fontSize: 12.5, padding: "6px 10px",
-                        background: "var(--paper)", color: "var(--ink)",
-                        border: "1px solid var(--ink)", borderRadius: 0, cursor: "pointer",
-                      }}>
-                      + {ex.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-
-      {/* Volume By Group */}
-      <Rule label="Volume By Group" />
-      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-        {MUSCLE_GROUPS.map((g) => {
-          const target = WEEKLY_TARGETS[g];
-          const done = progress[g];
-          const pct = target ? done / target : 0;
-          const onTrack = pct * 100 >= ((currentDay - 1) / 4) * 100;
+      {/* Volume bars */}
+      <Rule label="Volume By Group"/>
+      <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
+        {MUSCLE_GROUPS.map(g => {
+          const target = targets[g] || 0;
+          const done = progress[g] || 0;
+          const pct = target ? done/target : 0;
           return (
             <div key={g}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontFamily: "var(--font-body)", fontSize: 14 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ width:8, height:8, borderRadius:999, background: MG_COLORS[g] }} />
-                  <span style={{ fontFamily: "var(--font-display)", fontSize: 17, letterSpacing: -0.1 }}>{MG_LABEL[g]}</span>
+              <div style={{ display:"flex", justifyContent:"space-between", alignItems:"baseline" }}>
+                <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                  <span style={{ width:8, height:8, borderRadius:999, background:MG_COLORS[g] }}/>
+                  <span style={{ fontFamily:"var(--font-display)", fontSize:16, letterSpacing:-0.1 }}>{MG_LABEL[g]}</span>
                 </div>
-                <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: 0.08, color: "var(--ink-60)", fontVariantNumeric: "tabular-nums" }}>
+                <div style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.08, color:"var(--ink-60)", fontVariantNumeric:"tabular-nums" }}>
                   {done}/{target}
-                  <span style={{ marginLeft: 8, color: onTrack ? "var(--success)" : "var(--accent)" }}>
-                    {onTrack ? "ON PACE" : "LAGGING"}
-                  </span>
+                  <span style={{ marginLeft:8, color: pct>=1?"var(--success)":"var(--accent)" }}>{pct>=1?"DONE":"LAGGING"}</span>
                 </div>
               </div>
-              <div style={{ height: 6, background: "var(--rule)", marginTop: 6, position: "relative" }}>
-                <div style={{ position: "absolute", inset: 0, width: `${Math.min(1, pct) * 100}%`, background: MG_COLORS[g], transition: "width 500ms ease" }} />
-                <div style={{ position: "absolute", top: -2, bottom: -2, left: `${((currentDay - 1) / 4) * 100}%`, width: 1, background: "var(--ink)", opacity: 0.6 }} />
+              <div style={{ height:5, background:"var(--rule)", marginTop:5, position:"relative" }}>
+                <div style={{ position:"absolute", inset:0, width:`${Math.min(1,pct)*100}%`, background:MG_COLORS[g], transition:"width 500ms ease" }}/>
               </div>
             </div>
           );
@@ -537,115 +374,114 @@ function Dashboard({ state, dispatch, navigate }) {
       </div>
 
       {/* Footer */}
-      <div style={{
-        marginTop: 32, paddingTop: 16, borderTop: "1px solid var(--ink)",
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        fontFamily: "var(--font-mono)", fontSize: 9.5, letterSpacing: 0.18,
-        textTransform: "uppercase", color: "var(--ink-60)",
-      }}>
-        <span />
-        <span onClick={() => dispatch({ type: "RESET_WEEK" })} style={{ cursor: "pointer", borderBottom: "1px solid var(--ink-60)" }}>Reset Week</span>
+      <div style={{ marginTop:28, paddingTop:14, borderTop:"1px solid var(--ink)", display:"flex", justifyContent:"flex-end" }}>
+        <span onClick={() => dispatch({ type:"RESET_SPLIT" })} style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)", cursor:"pointer", borderBottom:"1px solid var(--ink-60)" }}>Reset Week</span>
       </div>
     </div>
   );
 }
 
+// ── Day Screen ──
 function DayScreen({ state, dispatch, navigate, dayId }) {
-  const day = dayId;
-  const slots = DEFAULT_PLAN[day-1];
-  const { completions } = state;
-  const plannedDone = new Set(completions.filter((c) => c.day === day && c.slot < 1000).map((c) => c.slot));
-  const extras = completions.filter((c) => c.day === day && c.slot >= 1000).sort((a,b) => a.slot - b.slot);
-  const extraIds = new Set(extras.map((c) => c.id));
+  const { activeSplit, completions, completedDays } = state;
+  const splitData = SPLITS[activeSplit];
+  const plan = splitData.days[dayId-1];
+  const splitCompletions = completions[activeSplit] || [];
+  const splitCompletedDays = completedDays[activeSplit] || [];
 
-  const totalCount = slots.length + extras.length;
+  const plannedDone = new Set(splitCompletions.filter(c=>c.day===dayId && c.slot<1000).map(c=>c.slot));
+  const extras = splitCompletions.filter(c=>c.day===dayId && c.slot>=1000).sort((a,b)=>a.slot-b.slot);
+  const extraIds = new Set(extras.map(c=>c.id));
+
+  const allIds = [...plan.main, ...plan.other];
+  const totalCount = allIds.length + extras.length;
   const doneCount = plannedDone.size + extras.length;
-  const pct = totalCount ? doneCount / totalCount : 0;
-  const focus = DAY_FOCUS[day-1];
+  const pct = totalCount ? doneCount/totalCount : 0;
+  const isDone = splitCompletedDays.includes(dayId);
 
-  const todayIds = new Set(slots);
-  const alts = {};
-  MUSCLE_GROUPS.forEach((g) => alts[g] = []);
-  Object.values(EXERCISES).forEach((ex) => { if (!todayIds.has(ex.id)) alts[ex.group].push(ex); });
+  // Catalog: exercises NOT in today's plan
+  const todaySet = new Set(allIds);
+  const catalog = {};
+  MUSCLE_GROUPS.forEach(g => catalog[g]=[]);
+  Object.values(EXERCISES).forEach(ex => { if (!todaySet.has(ex.id)) catalog[ex.group].push(ex); });
 
   return (
-    <div style={{ padding: "8px 24px 120px", fontFamily: "var(--font-body)", color: "var(--ink)" }}>
+    <div style={{ padding:"8px 24px 120px", fontFamily:"var(--font-body)", color:"var(--ink)" }}>
+
       {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
-        <button onClick={() => navigate({ screen: "home" })} style={{
-          background: "var(--paper)", cursor: "pointer",
-          border: "1px solid var(--ink)",
-          fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: 0.16,
-          textTransform: "uppercase", color: "var(--ink)", padding: "6px 10px",
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:4 }}>
+        <button onClick={() => navigate({ screen:"home" })} style={{
+          background:"var(--paper)", cursor:"pointer", border:"1px solid var(--ink)",
+          fontFamily:"var(--font-mono)", fontSize:10.5, letterSpacing:0.16,
+          textTransform:"uppercase", color:"var(--ink)", padding:"6px 10px",
         }}>← Back to Log</button>
-        <div style={{ display: "flex", gap: 8, fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: 0.14, textTransform: "uppercase", color: "var(--ink-60)" }}>
-          {day > 1 && <span onClick={() => navigate({ screen: "day", dayId: day-1 })} style={{ cursor: "pointer" }}>‹ Prev</span>}
-          {day < 4 && <span onClick={() => navigate({ screen: "day", dayId: day+1 })} style={{ cursor: "pointer" }}>Next ›</span>}
+        <div style={{ display:"flex", gap:8, fontFamily:"var(--font-mono)", fontSize:10.5, letterSpacing:0.14, textTransform:"uppercase", color:"var(--ink-60)" }}>
+          {dayId>1 && <span onClick={()=>navigate({screen:"day",dayId:dayId-1})} style={{ cursor:"pointer" }}>‹ Prev</span>}
+          {dayId<splitData.days.length && <span onClick={()=>navigate({screen:"day",dayId:dayId+1})} style={{ cursor:"pointer" }}>Next ›</span>}
         </div>
       </div>
 
       {/* Folio */}
-      <div style={{ marginTop: 18, display: "flex", alignItems: "flex-end", gap: 14 }}>
-        <div style={{ fontFamily: "var(--font-display)", fontSize: 140, lineHeight: 0.82, letterSpacing: -0.06, fontVariantNumeric: "tabular-nums", fontWeight: 400, fontStyle: "italic" }}>{day}</div>
-        <div style={{ paddingBottom: 12, flex: 1 }}>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.18, textTransform: "uppercase", color: "var(--ink-60)" }}>Day {day} of Four</div>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 22, letterSpacing: -0.15, marginTop: 4, lineHeight: 1.1 }}>{focus.title}</div>
-          <div style={{ fontFamily: "var(--font-body)", fontSize: 12.5, color: "var(--ink-60)", marginTop: 3, fontStyle: "italic" }}>{focus.sub}</div>
+      <div style={{ marginTop:16, display:"flex", alignItems:"flex-end", gap:14 }}>
+        <div style={{ fontFamily:"var(--font-display)", fontSize:130, lineHeight:0.82, letterSpacing:-0.06, fontVariantNumeric:"tabular-nums", fontWeight:400, fontStyle:"italic", color:DAY_COLORS[dayId-1] }}>{dayId}</div>
+        <div style={{ paddingBottom:10, flex:1 }}>
+          <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)" }}>Day {dayId} · {SPLITS[activeSplit].label}</div>
+          <div style={{ fontFamily:"var(--font-display)", fontSize:22, letterSpacing:-0.15, marginTop:4, lineHeight:1.1 }}>{plan.title}</div>
+          <div style={{ fontFamily:"var(--font-body)", fontSize:12.5, color:"var(--ink-60)", marginTop:3, fontStyle:"italic" }}>{plan.sub}</div>
         </div>
       </div>
 
-      {/* Progress meter */}
-      <div style={{ marginTop: 16, display: "flex", alignItems: "center", gap: 12 }}>
-        <div style={{ flex: 1, height: 2, background: "var(--rule)", position: "relative" }}>
-          <div style={{ position: "absolute", inset: 0, width: `${pct * 100}%`, background: "var(--ink)", transition: "width 400ms ease" }} />
+      {/* Progress bar */}
+      <div style={{ marginTop:14, display:"flex", alignItems:"center", gap:12 }}>
+        <div style={{ flex:1, height:2, background:"var(--rule)", position:"relative" }}>
+          <div style={{ position:"absolute", inset:0, width:`${pct*100}%`, background:"var(--ink)", transition:"width 400ms ease" }}/>
         </div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: 0.1, fontVariantNumeric: "tabular-nums" }}>{doneCount}/{totalCount}</div>
+        <div style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.1, fontVariantNumeric:"tabular-nums" }}>{doneCount}/{totalCount}</div>
       </div>
 
-      {/* Prescribed */}
-      <Rule label="Prescribed" />
+      {/* Main exercises */}
+      <Rule label="Main"/>
       <div>
-        {slots.map((id, slot) => {
+        {plan.main.map((id, slot) => {
           const ex = exerciseById(id);
-          return (
-            <ExerciseRow key={`${slot}-${id}`} ex={ex} checked={plannedDone.has(slot)}
-              onToggle={() => dispatch({ type: plannedDone.has(slot) ? "UNCHECK" : "CHECK", day, slot, id })}
-            />
-          );
+          return <ExerciseRow key={`m-${slot}`} ex={ex} isMain checked={plannedDone.has(slot)}
+            onToggle={() => dispatch({ type: plannedDone.has(slot)?"UNCHECK":"CHECK", split:activeSplit, day:dayId, slot, id })}/>;
         })}
-        {extras.map((c) => (
+      </div>
+
+      {/* Other exercises */}
+      <Rule label="Accessory"/>
+      <div>
+        {plan.other.map((id, i) => {
+          const slot = plan.main.length + i;
+          const ex = exerciseById(id);
+          return <ExerciseRow key={`o-${i}`} ex={ex} checked={plannedDone.has(slot)}
+            onToggle={() => dispatch({ type: plannedDone.has(slot)?"UNCHECK":"CHECK", split:activeSplit, day:dayId, slot, id })}/>;
+        })}
+        {extras.map(c => (
           <ExerciseRow key={`e-${c.slot}`} ex={exerciseById(c.id)} checked dashed
-            onToggle={() => dispatch({ type: "REMOVE_EXTRA", day, slot: c.slot })}
-          />
+            onToggle={() => dispatch({ type:"REMOVE_EXTRA", split:activeSplit, day:dayId, slot:c.slot })}/>
         ))}
-        <div style={{ borderTop: "1px solid var(--ink)" }} />
+        <div style={{ borderTop:"1px solid var(--ink)" }}/>
       </div>
 
       {/* Catalog */}
-      <Rule label="Catalog · Tap to Log Extra" />
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        {MUSCLE_GROUPS.map((g) => {
-          const list = alts[g];
-          if (list.length === 0) return null;
+      <Rule label="Catalog · Tap to Add"/>
+      <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
+        {MUSCLE_GROUPS.map(g => {
+          const list = catalog[g]; if(!list.length) return null;
           return (
             <div key={g}>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: 0.16, textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6, color: "var(--ink)", marginBottom: 6 }}>
-                <span style={{ width:6, height:6, borderRadius:999, background: MG_COLORS[g] }} />
-                {MG_LABEL[g]}
+              <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.16, textTransform:"uppercase", display:"flex", alignItems:"center", gap:6, color:"var(--ink)", marginBottom:5 }}>
+                <span style={{ width:6,height:6,borderRadius:999,background:MG_COLORS[g] }}/>{MG_LABEL[g]}
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {list.map((ex) => {
+              <div style={{ display:"flex", flexWrap:"wrap", gap:6 }}>
+                {list.map(ex => {
                   const checked = extraIds.has(ex.id);
                   return (
-                    <button key={ex.id}
-                      onClick={() => dispatch({ type: checked ? "REMOVE_EXTRA_BY_ID" : "ADD_EXTRA", day, id: ex.id })}
-                      style={{
-                        fontFamily: "var(--font-body)", fontSize: 12.5, padding: "5px 10px",
-                        background: checked ? "var(--ink)" : "transparent",
-                        color: checked ? "var(--paper)" : "var(--ink)",
-                        border: "1px solid var(--ink)", borderRadius: 0, cursor: "pointer",
-                      }}>
-                      {checked ? "✓ " : "+ "}{ex.name}
+                    <button key={ex.id} onClick={() => dispatch({ type:checked?"REMOVE_EXTRA_BY_ID":"ADD_EXTRA", split:activeSplit, day:dayId, id:ex.id })}
+                      style={{ fontFamily:"var(--font-body)", fontSize:12.5, padding:"5px 10px", background:checked?"var(--ink)":"transparent", color:checked?"var(--paper)":"var(--ink)", border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer" }}>
+                      {checked?"✓ ":"+ "}{ex.name}
                     </button>
                   );
                 })}
@@ -655,8 +491,27 @@ function DayScreen({ state, dispatch, navigate, dayId }) {
         })}
       </div>
 
-      <div style={{ marginTop: 24, display: "flex", gap: 10 }}>
-        <TLButton onClick={() => dispatch({ type: "RESET_DAY", day })}>Reset Day</TLButton>
+      {/* Complete Day button */}
+      <div style={{ marginTop:32, display:"flex", gap:10 }}>
+        {!isDone ? (
+          <button onClick={() => { dispatch({ type:"COMPLETE_DAY", split:activeSplit, day:dayId }); navigate({ screen:"home" }); }}
+            style={{
+              flex:1, fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:0.16,
+              textTransform:"uppercase", padding:"16px",
+              background:"var(--ink)", color:"var(--paper)",
+              border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer",
+            }}>
+            ✓ Complete Day {dayId}
+          </button>
+        ) : (
+          <div style={{ flex:1, fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.16, textTransform:"uppercase", padding:"16px", background:"var(--accent)", color:"#fff", textAlign:"center" }}>
+            Day {dayId} Done
+          </div>
+        )}
+        <button onClick={() => dispatch({ type:"RESET_DAY", split:activeSplit, day:dayId })}
+          style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.12, textTransform:"uppercase", padding:"16px 14px", background:"transparent", color:"var(--ink)", border:"1px solid var(--rule)", borderRadius:0, cursor:"pointer" }}>
+          Reset
+        </button>
       </div>
     </div>
   );
@@ -665,188 +520,141 @@ function DayScreen({ state, dispatch, navigate, dayId }) {
 Object.assign(window, { Dashboard, DayScreen, computeProgress });
 </script>
 
-<!-- ═══════════════════════════════════ APP ═══════════════════════════════════ -->
+<!-- ═══ APP ═══ -->
 <script type="text/babel">
 const { useReducer, useEffect: useEffectApp, useState: useStateApp } = React;
 
-const ACCENT_CHOICES = {
-  vermilion: "oklch(0.58 0.20 28)",
-  ink:       "oklch(0.22 0.02 260)",
-  olive:     "oklch(0.55 0.11 115)",
-  cobalt:    "oklch(0.48 0.17 258)",
-};
-
+const ACCENT_CHOICES = { vermilion:"oklch(0.58 0.20 28)", ink:"oklch(0.22 0.02 260)", olive:"oklch(0.55 0.11 115)", cobalt:"oklch(0.48 0.17 258)" };
 const VARIANTS = {
-  paper: { paper: "oklch(0.968 0.008 78)", ink: "oklch(0.18 0.015 60)", ink60: "oklch(0.45 0.012 60)", ink30: "oklch(0.72 0.008 60)", rule: "oklch(0.88 0.01 75)", accentTint: "oklch(0.95 0.03 28 / 0.6)" },
-  ink:   { paper: "oklch(0.16 0.012 260)", ink: "oklch(0.95 0.008 80)", ink60: "oklch(0.68 0.012 80)", ink30: "oklch(0.42 0.012 80)", rule: "oklch(0.28 0.012 260)", accentTint: "oklch(0.22 0.04 28 / 0.5)" },
-  court: { paper: "oklch(0.94 0.015 95)", ink: "oklch(0.22 0.04 160)", ink60: "oklch(0.48 0.03 160)", ink30: "oklch(0.72 0.015 160)", rule: "oklch(0.82 0.02 95)", accentTint: "oklch(0.92 0.04 28 / 0.6)" },
+  paper: { paper:"oklch(0.968 0.008 78)", ink:"oklch(0.18 0.015 60)", ink60:"oklch(0.45 0.012 60)", ink30:"oklch(0.72 0.008 60)", rule:"oklch(0.88 0.01 75)", accentTint:"oklch(0.95 0.03 28 / 0.6)" },
+  ink:   { paper:"oklch(0.16 0.012 260)", ink:"oklch(0.95 0.008 80)", ink60:"oklch(0.68 0.012 80)", ink30:"oklch(0.42 0.012 80)", rule:"oklch(0.28 0.012 260)", accentTint:"oklch(0.22 0.04 28 / 0.5)" },
+  court: { paper:"oklch(0.94 0.015 95)",  ink:"oklch(0.22 0.04 160)", ink60:"oklch(0.48 0.03 160)", ink30:"oklch(0.72 0.015 160)", rule:"oklch(0.82 0.02 95)", accentTint:"oklch(0.92 0.04 28 / 0.6)" },
+};
+const TYPE_PAIRS = {
+  "serif-geist": { display:`"Instrument Serif","Times New Roman",serif`, body:`"Geist","Helvetica Neue",system-ui,sans-serif`, mono:`"Geist Mono",ui-monospace,monospace` },
+  "editorial":   { display:`"EB Garamond",Georgia,serif`, body:`"EB Garamond",Georgia,serif`, mono:`"IBM Plex Mono",ui-monospace,monospace` },
 };
 
-const TYPE_PAIRS = {
-  "serif-geist": { display: `"Instrument Serif", "Times New Roman", serif`, body: `"Geist", "Helvetica Neue", system-ui, sans-serif`, mono: `"Geist Mono", ui-monospace, monospace` },
-  "serif-mono":  { display: `"Instrument Serif", serif`, body: `"JetBrains Mono", ui-monospace, monospace`, mono: `"JetBrains Mono", ui-monospace, monospace` },
-  "editorial":   { display: `"EB Garamond", Georgia, serif`, body: `"EB Garamond", Georgia, serif`, mono: `"IBM Plex Mono", ui-monospace, monospace` },
+const EMPTY_SPLITS = { fullBody:[], pushPull:[], upperLower:[] };
+const INITIAL_STATE = {
+  activeSplit: "fullBody",
+  completions:   { ...EMPTY_SPLITS },
+  completedDays: { ...EMPTY_SPLITS },
 };
 
 function reducer(state, action) {
-  switch (action.type) {
-    case "CHECK": {
-      if (state.completions.some(c => c.day === action.day && c.slot === action.slot)) return state;
-      return { ...state, completions: [...state.completions, { day: action.day, slot: action.slot, id: action.id }] };
-    }
+  const split = action.split || state.activeSplit;
+  const sc = state.completions[split] || [];
+  const sd = state.completedDays[split] || [];
+
+  switch(action.type) {
+    case "SET_SPLIT":
+      return { ...state, activeSplit: action.split };
+
+    case "CHECK":
+      if (sc.some(c=>c.day===action.day && c.slot===action.slot)) return state;
+      return { ...state, completions: { ...state.completions, [split]:[...sc,{day:action.day,slot:action.slot,id:action.id}] }};
+
     case "UNCHECK":
-      return { ...state, completions: state.completions.filter(c => !(c.day === action.day && c.slot === action.slot)) };
+      return { ...state, completions: { ...state.completions, [split]:sc.filter(c=>!(c.day===action.day&&c.slot===action.slot)) }};
+
     case "ADD_EXTRA": {
-      const used = state.completions.filter(c => c.day === action.day && c.slot >= 1000).map(c => c.slot);
-      let slot = 1000;
-      while (used.includes(slot)) slot++;
-      return { ...state, completions: [...state.completions, { day: action.day, slot, id: action.id }] };
+      const used = sc.filter(c=>c.day===action.day&&c.slot>=1000).map(c=>c.slot);
+      let slot=1000; while(used.includes(slot)) slot++;
+      return { ...state, completions: { ...state.completions, [split]:[...sc,{day:action.day,slot,id:action.id}] }};
     }
     case "REMOVE_EXTRA":
-      return { ...state, completions: state.completions.filter(c => !(c.day === action.day && c.slot === action.slot)) };
+      return { ...state, completions: { ...state.completions, [split]:sc.filter(c=>!(c.day===action.day&&c.slot===action.slot)) }};
+
     case "REMOVE_EXTRA_BY_ID":
-      return { ...state, completions: state.completions.filter(c => !(c.day === action.day && c.slot >= 1000 && c.id === action.id)) };
+      return { ...state, completions: { ...state.completions, [split]:sc.filter(c=>!(c.day===action.day&&c.slot>=1000&&c.id===action.id)) }};
+
+    case "COMPLETE_DAY": {
+      const days = sd.includes(action.day) ? sd : [...sd, action.day];
+      const totalDays = SPLITS[split].days.length;
+      if (days.length >= totalDays) {
+        // Week complete — reset this split
+        return { ...state,
+          completions:   { ...state.completions,   [split]:[] },
+          completedDays: { ...state.completedDays, [split]:[] },
+        };
+      }
+      return { ...state, completedDays: { ...state.completedDays, [split]:days } };
+    }
     case "RESET_DAY":
-      return { ...state, completions: state.completions.filter(c => c.day !== action.day) };
-    case "RESET_WEEK":
-      return { ...state, completions: [] };
+      return { ...state,
+        completions:   { ...state.completions,   [split]:sc.filter(c=>c.day!==action.day) },
+        completedDays: { ...state.completedDays, [split]:sd.filter(d=>d!==action.day) },
+      };
+    case "RESET_SPLIT":
+      return { ...state,
+        completions:   { ...state.completions,   [split]:[] },
+        completedDays: { ...state.completedDays, [split]:[] },
+      };
     default: return state;
   }
 }
 
-function TweaksPanel({ tweaks, update }) {
-  const labelSty = { fontFamily: "ui-monospace, monospace", fontSize: 9.5, letterSpacing: 0.14, textTransform: "uppercase", color: "rgba(0,0,0,0.55)", marginBottom: 6 };
-  const btnSty = (active) => ({
-    padding: "6px 10px",
-    border: `1px solid ${active ? "#000" : "rgba(0,0,0,0.25)"}`,
-    background: active ? "#000" : "transparent",
-    color: active ? "#fff" : "#000",
-    fontFamily: "ui-monospace, monospace", fontSize: 10.5,
-    letterSpacing: 0.08, textTransform: "uppercase",
-    cursor: "pointer", borderRadius: 0,
-  });
-  return (
-    <div style={{
-      position: "fixed", right: 20, bottom: 20, width: 280,
-      background: "rgba(255,255,255,0.96)", border: "1px solid rgba(0,0,0,0.2)",
-      padding: "16px 16px 14px", backdropFilter: "blur(8px)",
-      fontFamily: "ui-monospace, monospace", zIndex: 1000,
-    }}>
-      <div style={{ fontSize: 11, letterSpacing: 0.2, textTransform: "uppercase", marginBottom: 14, display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-        <span>Tweaks</span>
-        <span style={{ fontSize: 9, opacity: 0.5 }}>Training Log</span>
-      </div>
-      <div style={labelSty}>Variant</div>
-      <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
-        {["paper","ink","court"].map(v => (
-          <button key={v} style={btnSty(tweaks.variant === v)} onClick={() => update("variant", v)}>{v}</button>
-        ))}
-      </div>
-      <div style={labelSty}>Accent</div>
-      <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
-        {Object.keys(ACCENT_CHOICES).map(a => (
-          <button key={a} style={btnSty(tweaks.accent === a)} onClick={() => update("accent", a)}>{a}</button>
-        ))}
-      </div>
-      <div style={labelSty}>Type Pair</div>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-        {Object.keys(TYPE_PAIRS).map(t => (
-          <button key={t} style={btnSty(tweaks.typePair === t)} onClick={() => update("typePair", t)}>{t}</button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function App() {
-  const isStandalone = window.matchMedia("(display-mode: standalone)").matches
-    || window.navigator.standalone === true;
-
-  const [state, dispatch] = useReducer(reducer, { completions: INITIAL_COMPLETIONS });
+  const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone===true;
+  const [state, dispatch] = useReducer(reducer, null, () => {
+    try { const s=localStorage.getItem("tl-state"); if(s) return JSON.parse(s); } catch {}
+    return INITIAL_STATE;
+  });
+  useEffectApp(() => { localStorage.setItem("tl-state", JSON.stringify(state)); }, [state]);
 
   const [route, setRoute] = useStateApp(() => {
-    try { const s = localStorage.getItem("tl-route"); if (s) return JSON.parse(s); } catch {}
-    return { screen: "home" };
+    try { const s=localStorage.getItem("tl-route"); if(s) return JSON.parse(s); } catch {}
+    return { screen:"home" };
   });
   useEffectApp(() => { localStorage.setItem("tl-route", JSON.stringify(route)); }, [route]);
 
-  const [tweaks, setTweaks] = useStateApp({ accent: "vermilion", variant: "paper", typePair: "serif-geist" });
+  const [tweaks, setTweaks] = useStateApp({ accent:"vermilion", variant:"paper", typePair:"serif-geist" });
   const [tweaksOn, setTweaksOn] = useStateApp(false);
-
   useEffectApp(() => {
-    const handler = (e) => {
-      if (e.data?.type === "__activate_edit_mode") setTweaksOn(true);
-      if (e.data?.type === "__deactivate_edit_mode") setTweaksOn(false);
-    };
-    window.addEventListener("message", handler);
-    window.parent.postMessage({ type: "__edit_mode_available" }, "*");
-    return () => window.removeEventListener("message", handler);
-  }, []);
+    const h = e => { if(e.data?.type==="__activate_edit_mode") setTweaksOn(true); if(e.data?.type==="__deactivate_edit_mode") setTweaksOn(false); };
+    window.addEventListener("message",h);
+    window.parent.postMessage({type:"__edit_mode_available"},"*");
+    return () => window.removeEventListener("message",h);
+  },[]);
 
-  const updateTweak = (k, v) => {
-    setTweaks(prev => ({ ...prev, [k]: v }));
-    window.parent.postMessage({ type: "__edit_mode_set_keys", edits: { [k]: v } }, "*");
-  };
-
-  const variant = VARIANTS[tweaks.variant] || VARIANTS.paper;
-  const pair = TYPE_PAIRS[tweaks.typePair] || TYPE_PAIRS["serif-geist"];
-  const accent = ACCENT_CHOICES[tweaks.accent] || ACCENT_CHOICES.vermilion;
-
+  const v = VARIANTS[tweaks.variant]||VARIANTS.paper;
+  const p = TYPE_PAIRS[tweaks.typePair]||TYPE_PAIRS["serif-geist"];
   const cssVars = {
-    "--paper": variant.paper, "--ink": variant.ink, "--ink-60": variant.ink60,
-    "--ink-30": variant.ink30, "--rule": variant.rule, "--accent": accent,
-    "--accent-tint": variant.accentTint, "--success": "oklch(0.52 0.12 150)",
-    "--font-display": pair.display, "--font-body": pair.body, "--font-mono": pair.mono,
+    "--paper":v.paper,"--ink":v.ink,"--ink-60":v.ink60,"--ink-30":v.ink30,
+    "--rule":v.rule,"--accent":ACCENT_CHOICES[tweaks.accent]||ACCENT_CHOICES.vermilion,
+    "--accent-tint":v.accentTint,"--success":"oklch(0.52 0.12 150)",
+    "--font-display":p.display,"--font-body":p.body,"--font-mono":p.mono,
   };
 
-  const navigate = (r) => setRoute(r);
-
+  const navigate = r => setRoute(r);
   const renderScreen = () => {
-    if (route.screen === "day") return <DayScreen state={state} dispatch={dispatch} navigate={navigate} dayId={route.dayId} />;
-    return <Dashboard state={state} dispatch={dispatch} navigate={navigate} />;
+    if (route.screen==="day") return <DayScreen state={state} dispatch={dispatch} navigate={navigate} dayId={route.dayId}/>;
+    return <Dashboard state={state} dispatch={dispatch} navigate={navigate}/>;
   };
 
-  // On a real installed device — no fake frame, fill the screen natively
   if (isStandalone) {
     return (
-      <div style={{
-        minHeight: "100vh", background: "var(--paper)",
-        paddingTop: "env(safe-area-inset-top)",
-        paddingBottom: "env(safe-area-inset-bottom)",
-        ...cssVars,
-      }}>
-        <div style={{ paddingTop: 12 }}>
-          {renderScreen()}
-        </div>
+      <div style={{ minHeight:"100vh", background:"var(--paper)", paddingTop:"env(safe-area-inset-top)", paddingBottom:"env(safe-area-inset-bottom)", ...cssVars }}>
+        <div style={{ paddingTop:12 }}>{renderScreen()}</div>
       </div>
     );
   }
 
-  // Desktop browser — show the iPhone frame preview
   return (
     <div style={{
-      minHeight: "100vh",
-      background: tweaks.variant === "ink"
-        ? "radial-gradient(ellipse at top, oklch(0.22 0.01 260), oklch(0.12 0.01 260))"
-        : "radial-gradient(ellipse at top, oklch(0.93 0.01 80), oklch(0.86 0.015 70))",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "40px 20px", ...cssVars,
+      minHeight:"100vh",
+      background: tweaks.variant==="ink"
+        ? "radial-gradient(ellipse at top,oklch(0.22 0.01 260),oklch(0.12 0.01 260))"
+        : "radial-gradient(ellipse at top,oklch(0.93 0.01 80),oklch(0.86 0.015 70))",
+      display:"flex", alignItems:"center", justifyContent:"center", padding:"40px 20px", ...cssVars,
     }}>
-      <IOSDevice width={390} height={844} dark={tweaks.variant === "ink"}>
-        <div style={{ minHeight: "100%", background: "var(--paper)", paddingTop: 54 }}>
+      <IOSDevice width={390} height={844} dark={tweaks.variant==="ink"}>
+        <div style={{ minHeight:"100%", background:"var(--paper)", paddingTop:54 }}>
           {renderScreen()}
         </div>
       </IOSDevice>
-
-      {tweaksOn && <TweaksPanel tweaks={tweaks} update={updateTweak} />}
-
-      {!tweaksOn && (
-        <div style={{
-          position: "fixed", bottom: 20, left: 20,
-          fontFamily: "ui-monospace, monospace", fontSize: 10, letterSpacing: 0.14,
-          textTransform: "uppercase", color: "rgba(0,0,0,0.4)", pointerEvents: "none",
-        }}>Training Log · toggle Tweaks ↗</div>
-      )}
+      {!tweaksOn && <div style={{ position:"fixed", bottom:20, left:20, fontFamily:"ui-monospace,monospace", fontSize:10, letterSpacing:0.14, textTransform:"uppercase", color:"rgba(0,0,0,0.4)", pointerEvents:"none" }}>Training Log</div>}
     </div>
   );
 }
@@ -857,13 +665,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(r => console.log('SW registered:', r.scope))
-      .catch(e => console.log('SW failed:', e));
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
   });
 }
 </script>
 
 </body>
 </html>
+
+
 

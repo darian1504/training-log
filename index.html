@@ -542,6 +542,21 @@ const INITIAL_STATE = {
   completedDays: { ...EMPTY_SPLITS },
 };
 
+function loadState() {
+  try {
+    const s = localStorage.getItem("tl-state");
+    if (!s) return INITIAL_STATE;
+    const parsed = JSON.parse(s);
+    // Guard: if old format (completions was array), reset
+    if (Array.isArray(parsed.completions)) return INITIAL_STATE;
+    return {
+      activeSplit: parsed.activeSplit || "fullBody",
+      completions:   { ...EMPTY_SPLITS, ...(parsed.completions   || {}) },
+      completedDays: { ...EMPTY_SPLITS, ...(parsed.completedDays || {}) },
+    };
+  } catch { return INITIAL_STATE; }
+}
+
 function reducer(state, action) {
   const split = action.split || state.activeSplit;
   const sc = state.completions[split] || [];
@@ -597,10 +612,7 @@ function reducer(state, action) {
 
 function App() {
   const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone===true;
-  const [state, dispatch] = useReducer(reducer, null, () => {
-    try { const s=localStorage.getItem("tl-state"); if(s) return JSON.parse(s); } catch {}
-    return INITIAL_STATE;
-  });
+  const [state, dispatch] = useReducer(reducer, null, loadState);
   useEffectApp(() => { localStorage.setItem("tl-state", JSON.stringify(state)); }, [state]);
 
   const [route, setRoute] = useStateApp(() => {

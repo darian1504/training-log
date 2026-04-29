@@ -77,7 +77,7 @@ const EXERCISES = {
   barbell_lunges:     { id:"barbell_lunges",     name:"Barbell Lunges",       group:"legs" },
   lying_leg_curls:    { id:"lying_leg_curls",    name:"Lying Leg Curls",      group:"legs" },
   calf_raises:        { id:"calf_raises",        name:"Calf Raises",          group:"legs" },
-  adductors:          { id:"adductors",          name:"Adductor Machine",     group:"legs" },
+  adductors:          { id:"adductors",          name:"Adductor / Abductor Machine", group:"legs" },
   lat_pulldown:       { id:"lat_pulldown",       name:"Lat Pulldown",         group:"back" },
   weighted_pullups:   { id:"weighted_pullups",   name:"Weighted Pull-Ups",    group:"back" },
   deadlift:           { id:"deadlift",           name:"Deadlift",             group:"back" },
@@ -89,7 +89,6 @@ const EXERCISES = {
   bench_press:        { id:"bench_press",        name:"Bench Press",          group:"chest" },
   weighted_dips:      { id:"weighted_dips",      name:"Weighted Dips",        group:"chest" },
   weighted_triceps_dips: { id:"weighted_triceps_dips", name:"Weighted Triceps Dips", group:"arms" },
-  bench_central:      { id:"bench_central",      name:"Flat Bench Press",     group:"chest" },
   incline_bench:      { id:"incline_bench",      name:"Incline Bench Press",  group:"chest" },
   cable_crossovers:   { id:"cable_crossovers",   name:"Cable Crossovers",     group:"chest" },
   military_press:     { id:"military_press",     name:"Military Press",       group:"shoulders" },
@@ -102,7 +101,7 @@ const EXERCISES = {
   ez_bar_curls:       { id:"ez_bar_curls",       name:"EZ Bar Curl",          group:"arms" },
   preacher_curl:      { id:"preacher_curl",      name:"Preacher Curl",        group:"arms" },
   dumbbell_extension: { id:"dumbbell_extension", name:"Dumbbell Extension",   group:"arms" },
-  abs:                { id:"abs",                name:"Abs",                  group:"abs" },
+  plank:              { id:"plank",              name:"Plank",                group:"abs" },
   hanging_leg_raises: { id:"hanging_leg_raises", name:"Hanging Leg Raises",   group:"abs" },
 };
 
@@ -110,10 +109,10 @@ const SPLITS = {
   fullBody: {
     label: "Full Body",
     days: [
-      { title:"Full Body A", sub:"Legs & pull compound",   main:["squat","weighted_pullups"],    other:["leg_extension","lat_pulldown","abs"] },
+      { title:"Full Body A", sub:"Legs & pull compound",   main:["squat","weighted_pullups"],    other:["leg_extension","lat_pulldown","hanging_leg_raises"] },
       { title:"Full Body B", sub:"Press & row",             main:["bench_press","db_row"],         other:["military_press","skullcrusher","hammer_curl"] },
       { title:"Full Body C", sub:"Squat & push",            main:["squat","weighted_dips"],         other:["leg_press","adductors","calf_raises"] },
-      { title:"Full Body D", sub:"Hinge & press",           main:["deadlift","bench_central"],     other:["abs","lateral_raises","ez_bar_curls","triceps_pushdowns"] },
+      { title:"Full Body D", sub:"Hinge & press",           main:["deadlift","bench_press"],        other:["plank","lateral_raises","ez_bar_curls","triceps_pushdowns"] },
     ],
   },
   pushPull: {
@@ -122,7 +121,7 @@ const SPLITS = {
       { title:"Push A",  sub:"Chest & shoulders",   main:["incline_bench","bench_press"],      other:["military_press","lateral_raises","weighted_triceps_dips","triceps_pushdowns"] },
       { title:"Pull A",  sub:"Back & biceps",        main:["pullups_bw","lat_pulldown"],        other:["db_row","rear_delt_fly","ez_bar_curls","hammer_curl"] },
       { title:"Legs",    sub:"Squat & posterior",    main:["squat","romanian_deadlift"],        other:["leg_press","adductors","calf_raises","hanging_leg_raises"] },
-      { title:"Push B",  sub:"Dips & hinge",         main:["weighted_dips","deadlift"],         other:["abs","preacher_curl","dumbbell_extension"] },
+      { title:"Full Body", sub:"Dips & hinge",        main:["weighted_dips","deadlift"],         other:["hanging_leg_raises","preacher_curl","dumbbell_extension"] },
     ],
   },
   upperLower: {
@@ -131,7 +130,7 @@ const SPLITS = {
       { title:"Upper A", sub:"Horizontal push & pull", main:["bench_press","weighted_pullups"], other:["military_press","db_row","lateral_raises"] },
       { title:"Lower A", sub:"Quad focus",             main:["squat","leg_press"],              other:["leg_extension","calf_raises","adductors"] },
       { title:"Upper B", sub:"Vertical press & pull",  main:["military_press","lat_pulldown"],  other:["incline_bench","seated_cable_rows","skullcrusher","hammer_curl"] },
-      { title:"Lower B", sub:"Posterior chain",        main:["deadlift","hack_squat"],          other:["lying_leg_curls","calf_raises","abs"] },
+      { title:"Lower B", sub:"Posterior chain",        main:["deadlift","hack_squat"],          other:["lying_leg_curls","calf_raises","plank"] },
     ],
   },
 };

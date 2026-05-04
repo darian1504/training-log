@@ -88,6 +88,7 @@ const EXERCISES = {
   romanian_deadlift:  { id:"romanian_deadlift",  name:"Romanian Deadlift",    group:"back" },
   bench_press:        { id:"bench_press",        name:"Bench Press",          group:"chest" },
   weighted_dips:      { id:"weighted_dips",      name:"Chest Dips",           group:"chest" },
+  triceps_dips:       { id:"triceps_dips",       name:"Triceps Dips",         group:"arms" },
   incline_bench:      { id:"incline_bench",      name:"Incline Bench Press",  group:"chest" },
   cable_crossovers:   { id:"cable_crossovers",   name:"Cable Crossovers",     group:"chest" },
   military_press:     { id:"military_press",     name:"Military Press",       group:"shoulders" },
@@ -119,10 +120,10 @@ const SPLITS = {
   pushPull: {
     label: "Push / Pull / Legs",
     days: [
-      { title:"Push A",  sub:"Chest & shoulders",   main:["incline_bench","bench_press"],      other:["military_press","lateral_raises","triceps_pushdowns","weighted_dips"] },
+      { title:"Push A",  sub:"Chest & shoulders",   main:["incline_bench","bench_press"],      other:["military_press","lateral_raises","triceps_dips","weighted_dips"] },
       { title:"Pull A",  sub:"Back & biceps",        main:["pullups_bw","lat_pulldown"],        other:["db_row","rear_delt_fly","dumbbell_curl","hammer_curl"] },
       { title:"Legs",    sub:"Squat & posterior",    main:["squat","romanian_deadlift"],        other:["leg_press","adductors","calf_raises","hanging_leg_raises"] },
-      { title:"Full Body", sub:"Deadlift & core",    main:["deadlift","plank"],                 other:["triceps_pushdowns","preacher_curl","dumbbell_extension"] },
+      { title:"Full Body", sub:"Deadlift & core",    main:["deadlift","plank","bodyweight_exercises"], other:["triceps_pushdowns","preacher_curl","dumbbell_extension"] },
     ],
   },
   upperLower: {

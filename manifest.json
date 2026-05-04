@@ -6,17 +6,17 @@
   "scope": "/training-log/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f7f3ec",
+  "background_color": "#18181c",
   "theme_color": "#1c1a18",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "icon-192px.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "icon-512px.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

@@ -107,31 +107,13 @@ const EXERCISES = {
 };
 
 const SPLITS = {
-  fullBody: {
-    label: "Full Body",
-    days: [
-      { title:"Full Body A", sub:"Legs & pull compound",   main:["squat","pullups_bw"],          other:["leg_extension","lat_pulldown","hanging_leg_raises"] },
-      { title:"Full Body B", sub:"Press & row",             main:["bench_press","db_row"],         other:["military_press","skullcrusher","hammer_curl"] },
-      { title:"Full Body C", sub:"Squat & push",            main:["squat","weighted_dips"],         other:["leg_press","adductors","calf_raises"] },
-      { title:"Full Body D", sub:"Hinge & press",           main:["deadlift","bench_press"],        other:["plank","lateral_raises","ez_bar_curls","triceps_pushdowns"] },
-    ],
-  },
   pushPull: {
     label: "Push / Pull / Legs",
     days: [
-      { title:"Push A",  sub:"Chest & shoulders",   main:["incline_bench","bench_press"],      other:["military_press","lateral_raises","triceps_dips","weighted_dips"] },
-      { title:"Pull A",  sub:"Back & biceps",        main:["pullups_bw","lat_pulldown"],        other:["db_row","rear_delt_fly","dumbbell_curl","hammer_curl"] },
-      { title:"Legs",    sub:"Squat & posterior",    main:["squat","romanian_deadlift"],        other:["leg_press","adductors","calf_raises","hanging_leg_raises"] },
-      { title:"Full Body", sub:"Deadlift & core",    main:["deadlift","plank","bodyweight_exercises"], other:["triceps_pushdowns","preacher_curl","dumbbell_extension"] },
-    ],
-  },
-  upperLower: {
-    label: "Upper / Lower",
-    days: [
-      { title:"Upper A", sub:"Horizontal push & pull", main:["bench_press","pullups_bw"],       other:["military_press","db_row","lateral_raises"] },
-      { title:"Lower A", sub:"Quad focus",             main:["squat","leg_press"],              other:["leg_extension","calf_raises","adductors"] },
-      { title:"Upper B", sub:"Vertical press & pull",  main:["military_press","lat_pulldown"],  other:["incline_bench","seated_cable_rows","skullcrusher","hammer_curl"] },
-      { title:"Lower B", sub:"Posterior chain",        main:["deadlift","hack_squat"],          other:["lying_leg_curls","calf_raises","plank"] },
+      { title:"Push",   sub:"Chest & shoulders",   main:["incline_bench","bench_press"],           other:["military_press","lateral_raises","triceps_dips","weighted_dips"] },
+      { title:"Pull",   sub:"Back & biceps",        main:["pullups_bw","lat_pulldown"],             other:["db_row","rear_delt_fly","dumbbell_curl","hammer_curl"] },
+      { title:"Legs",   sub:"Squat & posterior",    main:["squat","romanian_deadlift"],             other:["leg_press","adductors","calf_raises","hanging_leg_raises"] },
+      { title:"Upper Mix", sub:"Deadlift & core",   main:["deadlift","plank","bodyweight_exercises"], other:["triceps_pushdowns","preacher_curl","dumbbell_extension"] },
     ],
   },
 };
@@ -551,7 +533,7 @@ const TYPE_PAIRS = {
   "editorial":   { display:`"EB Garamond",Georgia,serif`, body:`"EB Garamond",Georgia,serif`, mono:`"IBM Plex Mono",ui-monospace,monospace` },
 };
 
-const EMPTY_SPLITS = { fullBody:[], pushPull:[], upperLower:[] };
+const EMPTY_SPLITS = { pushPull:[] };
 const INITIAL_STATE = {
   activeSplit: "fullBody",
   completions:   { ...EMPTY_SPLITS },
@@ -566,7 +548,7 @@ function loadState() {
     // Guard: if old format (completions was array), reset
     if (Array.isArray(parsed.completions)) return INITIAL_STATE;
     return {
-      activeSplit: parsed.activeSplit || "fullBody",
+      activeSplit: "pushPull",
       completions:   { ...EMPTY_SPLITS, ...(parsed.completions   || {}) },
       completedDays: { ...EMPTY_SPLITS, ...(parsed.completedDays || {}) },
     };

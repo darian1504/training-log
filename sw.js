@@ -1,5 +1,5 @@
-const CACHE = 'training-log-v16';
-const ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
+const CACHE = 'training-log-v17';
+const ASSETS = ['./', './index.html', './manifest.json', './icon-192px.png', './icon-512px.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));

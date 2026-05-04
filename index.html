@@ -535,7 +535,7 @@ const TYPE_PAIRS = {
 
 const EMPTY_SPLITS = { pushPull:[] };
 const INITIAL_STATE = {
-  activeSplit: "fullBody",
+  activeSplit: "pushPull",
   completions:   { ...EMPTY_SPLITS },
   completedDays: { ...EMPTY_SPLITS },
 };
@@ -547,8 +547,9 @@ function loadState() {
     const parsed = JSON.parse(s);
     // Guard: if old format (completions was array), reset
     if (Array.isArray(parsed.completions)) return INITIAL_STATE;
+    const activeSplit = SPLITS[parsed.activeSplit] ? parsed.activeSplit : "pushPull";
     return {
-      activeSplit: "pushPull",
+      activeSplit,
       completions:   { ...EMPTY_SPLITS, ...(parsed.completions   || {}) },
       completedDays: { ...EMPTY_SPLITS, ...(parsed.completedDays || {}) },
     };

@@ -67,62 +67,135 @@ Object.assign(window, { IOSDevice, IOSStatusBar });
 const MUSCLE_GROUPS = ["legs","back","chest","arms","shoulders","abs"];
 const MG_COLORS = { legs:"oklch(0.62 0.13 145)", back:"oklch(0.52 0.15 258)", chest:"oklch(0.58 0.17 28)", arms:"oklch(0.56 0.15 305)", shoulders:"oklch(0.68 0.14 70)", abs:"oklch(0.66 0.10 205)" };
 const MG_LABEL  = { legs:"Legs", back:"Back", chest:"Chest", arms:"Arms", shoulders:"Shoulders", abs:"Abs" };
-const DAY_COLORS = ["oklch(0.52 0.15 258)","oklch(0.55 0.14 145)","oklch(0.58 0.17 28)","oklch(0.72 0.14 85)"];
+const DAY_COLORS = ["oklch(0.52 0.15 258)","oklch(0.55 0.14 145)","oklch(0.58 0.17 28)","oklch(0.72 0.14 85)","oklch(0.56 0.15 305)","oklch(0.58 0.20 28)","oklch(0.66 0.10 205)"];
 
 const EXERCISES = {
-  squat:              { id:"squat",              name:"Back Squat",           group:"legs" },
-  leg_extension:      { id:"leg_extension",      name:"Leg Extension",        group:"legs" },
-  leg_press:          { id:"leg_press",          name:"Leg Press",            group:"legs" },
-  hack_squat:         { id:"hack_squat",         name:"Hack Squat",           group:"legs" },
-  barbell_lunges:     { id:"barbell_lunges",     name:"Barbell Lunges",       group:"legs" },
-  lying_leg_curls:    { id:"lying_leg_curls",    name:"Lying Leg Curls",      group:"legs" },
-  calf_raises:        { id:"calf_raises",        name:"Calf Raises",          group:"legs" },
+  // ── Legs ──
+  squat:              { id:"squat",              name:"Back Squat",                  group:"legs" },
+  leg_press:          { id:"leg_press",          name:"Leg Press",                   group:"legs" },
+  hack_squat:         { id:"hack_squat",         name:"Hack Squat",                  group:"legs" },
+  leg_extension:      { id:"leg_extension",      name:"Leg Extension",               group:"legs" },
+  romanian_deadlift:  { id:"romanian_deadlift",  name:"Romanian Deadlift",           group:"legs" },
+  lying_leg_curls:    { id:"lying_leg_curls",    name:"Lying Leg Curls",             group:"legs" },
+  seated_leg_curl:    { id:"seated_leg_curl",    name:"Seated Leg Curl",             group:"legs" },
+  hip_thrust:         { id:"hip_thrust",         name:"Hip Thrust",                  group:"legs" },
+  bulgarian_split:    { id:"bulgarian_split",    name:"Bulgarian Split Squat",       group:"legs" },
+  goblet_squat:       { id:"goblet_squat",       name:"Goblet Squat",                group:"legs" },
+  sumo_squat:         { id:"sumo_squat",         name:"Sumo Squat",                  group:"legs" },
+  barbell_lunges:     { id:"barbell_lunges",     name:"Barbell Lunges",              group:"legs" },
+  walking_lunges:     { id:"walking_lunges",     name:"Walking Lunges",              group:"legs" },
+  reverse_lunges:     { id:"reverse_lunges",     name:"Reverse Lunges",              group:"legs" },
+  step_ups:           { id:"step_ups",           name:"Step-Ups",                    group:"legs" },
+  good_mornings:      { id:"good_mornings",      name:"Good Mornings",               group:"legs" },
+  nordic_curl:        { id:"nordic_curl",        name:"Nordic Curl",                 group:"legs" },
+  single_leg_press:   { id:"single_leg_press",   name:"Single Leg Press",            group:"legs" },
+  calf_raises:        { id:"calf_raises",        name:"Calf Raises",                 group:"legs" },
   adductors:          { id:"adductors",          name:"Adductor / Abductor Machine", group:"legs" },
-  lat_pulldown:       { id:"lat_pulldown",       name:"Lat Pulldown",         group:"back" },
-  deadlift:           { id:"deadlift",           name:"Deadlift",             group:"back" },
-  db_row:             { id:"db_row",             name:"Dumbbell Row",         group:"back" },
-  pullups_bw:         { id:"pullups_bw",         name:"Pull-Ups",             group:"back" },
-  seated_cable_rows:  { id:"seated_cable_rows",  name:"Seated Cable Row",     group:"back" },
-  rear_delt_fly:      { id:"rear_delt_fly",      name:"Rear Delt Fly",        group:"back" },
-  romanian_deadlift:  { id:"romanian_deadlift",  name:"Romanian Deadlift",    group:"legs" },
-  bench_press:        { id:"bench_press",        name:"Bench Press",          group:"chest" },
-  weighted_dips:      { id:"weighted_dips",      name:"Chest Dips",           group:"chest" },
-  triceps_dips:       { id:"triceps_dips",       name:"Triceps Dips",         group:"arms" },
-  incline_bench:      { id:"incline_bench",      name:"Incline Bench Press",  group:"chest" },
-  cable_crossovers:   { id:"cable_crossovers",   name:"Cable Crossovers",     group:"chest" },
-  military_press:     { id:"military_press",     name:"Military Press",       group:"shoulders" },
-  lateral_raises:     { id:"lateral_raises",     name:"Lateral Raises",       group:"shoulders" },
-  face_pulls:         { id:"face_pulls",         name:"Face Pulls",           group:"shoulders" },
-  frontal_raises:     { id:"frontal_raises",     name:"Frontal Raises",       group:"shoulders" },
-  skullcrusher:       { id:"skullcrusher",       name:"Skullcrusher",         group:"arms" },
-  hammer_curl:        { id:"hammer_curl",        name:"Hammer Curl",          group:"arms" },
-  triceps_pushdowns:  { id:"triceps_pushdowns",  name:"Triceps Pushdowns",    group:"arms" },
-  ez_bar_curls:       { id:"ez_bar_curls",       name:"EZ Bar Curl",          group:"arms" },
-  dumbbell_curl:      { id:"dumbbell_curl",      name:"Dumbbell Curl",        group:"arms" },
-  preacher_curl:      { id:"preacher_curl",      name:"Preacher Curl",        group:"arms" },
-  dumbbell_extension: { id:"dumbbell_extension", name:"Dumbbell Extension",   group:"arms" },
-  plank:              { id:"plank",              name:"Plank",                group:"abs" },
-  hanging_leg_raises: { id:"hanging_leg_raises", name:"Hanging Leg Raises",   group:"abs" },
-  bodyweight_exercises: { id:"bodyweight_exercises", name:"Bodyweight Exercises", group:"abs" },
+  // ── Back ──
+  deadlift:           { id:"deadlift",           name:"Deadlift",                    group:"back" },
+  pullups_bw:         { id:"pullups_bw",         name:"Pull-Ups",                    group:"back" },
+  lat_pulldown:       { id:"lat_pulldown",       name:"Lat Pulldown",                group:"back" },
+  db_row:             { id:"db_row",             name:"Dumbbell Row",                group:"back" },
+  barbell_row:        { id:"barbell_row",        name:"Barbell Row",                 group:"back" },
+  t_bar_row:          { id:"t_bar_row",          name:"T-Bar Row",                   group:"back" },
+  seated_cable_rows:  { id:"seated_cable_rows",  name:"Seated Cable Row",            group:"back" },
+  wide_grip_row:      { id:"wide_grip_row",      name:"Wide Grip Cable Row",         group:"back" },
+  single_arm_row:     { id:"single_arm_row",     name:"Single Arm Cable Row",        group:"back" },
+  chest_supported_row:{ id:"chest_supported_row",name:"Chest Supported Row",         group:"back" },
+  rack_pull:          { id:"rack_pull",          name:"Rack Pull",                   group:"back" },
+  hyperextension:     { id:"hyperextension",     name:"Hyperextension",              group:"back" },
+  rear_delt_fly:      { id:"rear_delt_fly",      name:"Rear Delt Fly",               group:"back" },
+  // ── Chest ──
+  bench_press:        { id:"bench_press",        name:"Bench Press",                 group:"chest" },
+  incline_bench:      { id:"incline_bench",      name:"Incline Bench Press",         group:"chest" },
+  decline_bench:      { id:"decline_bench",      name:"Decline Bench Press",         group:"chest" },
+  dumbbell_bench:     { id:"dumbbell_bench",     name:"Dumbbell Bench Press",        group:"chest" },
+  weighted_dips:      { id:"weighted_dips",      name:"Chest Dips",                  group:"chest" },
+  dumbbell_flyes:     { id:"dumbbell_flyes",     name:"Dumbbell Flyes",              group:"chest" },
+  cable_flyes:        { id:"cable_flyes",        name:"Cable Flyes",                 group:"chest" },
+  cable_crossovers:   { id:"cable_crossovers",   name:"Cable Crossovers",            group:"chest" },
+  pec_deck:           { id:"pec_deck",           name:"Pec Deck",                    group:"chest" },
+  push_ups:           { id:"push_ups",           name:"Push-Ups",                    group:"chest" },
+  // ── Shoulders ──
+  military_press:     { id:"military_press",     name:"Military Press",              group:"shoulders" },
+  dumbbell_ohp:       { id:"dumbbell_ohp",       name:"Dumbbell Shoulder Press",     group:"shoulders" },
+  arnold_press:       { id:"arnold_press",       name:"Arnold Press",                group:"shoulders" },
+  lateral_raises:     { id:"lateral_raises",     name:"Lateral Raises",              group:"shoulders" },
+  cable_lateral:      { id:"cable_lateral",      name:"Cable Lateral Raises",        group:"shoulders" },
+  frontal_raises:     { id:"frontal_raises",     name:"Frontal Raises",              group:"shoulders" },
+  face_pulls:         { id:"face_pulls",         name:"Face Pulls",                  group:"shoulders" },
+  upright_row:        { id:"upright_row",        name:"Upright Row",                 group:"shoulders" },
+  shrugs:             { id:"shrugs",             name:"Shrugs",                      group:"shoulders" },
+  // ── Arms ──
+  barbell_curl:       { id:"barbell_curl",       name:"Barbell Curl",                group:"arms" },
+  ez_bar_curls:       { id:"ez_bar_curls",       name:"EZ Bar Curl",                 group:"arms" },
+  dumbbell_curl:      { id:"dumbbell_curl",      name:"Dumbbell Curl",               group:"arms" },
+  hammer_curl:        { id:"hammer_curl",        name:"Hammer Curl",                 group:"arms" },
+  preacher_curl:      { id:"preacher_curl",      name:"Preacher Curl",               group:"arms" },
+  concentration_curl: { id:"concentration_curl", name:"Concentration Curl",          group:"arms" },
+  incline_db_curl:    { id:"incline_db_curl",    name:"Incline Dumbbell Curl",       group:"arms" },
+  cable_curl:         { id:"cable_curl",         name:"Cable Curl",                  group:"arms" },
+  reverse_curl:       { id:"reverse_curl",       name:"Reverse Curl",                group:"arms" },
+  skullcrusher:       { id:"skullcrusher",       name:"Skullcrusher",                group:"arms" },
+  triceps_pushdowns:  { id:"triceps_pushdowns",  name:"Triceps Pushdowns",           group:"arms" },
+  dumbbell_extension: { id:"dumbbell_extension", name:"Dumbbell Extension",          group:"arms" },
+  overhead_tri_ext:   { id:"overhead_tri_ext",   name:"Overhead Triceps Extension",  group:"arms" },
+  close_grip_bench:   { id:"close_grip_bench",   name:"Close Grip Bench Press",      group:"arms" },
+  triceps_dips:       { id:"triceps_dips",       name:"Triceps Dips",                group:"arms" },
+  cable_kickback:     { id:"cable_kickback",     name:"Cable Triceps Kickback",      group:"arms" },
+  // ── Abs ──
+  plank:              { id:"plank",              name:"Plank",                       group:"abs" },
+  hanging_leg_raises: { id:"hanging_leg_raises", name:"Hanging Leg Raises",          group:"abs" },
+  bodyweight_exercises:{ id:"bodyweight_exercises",name:"Bodyweight Exercises",      group:"abs" },
+  crunches:           { id:"crunches",           name:"Crunches",                    group:"abs" },
+  leg_raises:         { id:"leg_raises",         name:"Leg Raises",                  group:"abs" },
+  russian_twists:     { id:"russian_twists",     name:"Russian Twists",              group:"abs" },
+  bicycle_crunches:   { id:"bicycle_crunches",   name:"Bicycle Crunches",            group:"abs" },
+  cable_crunch:       { id:"cable_crunch",       name:"Cable Crunch",                group:"abs" },
+  ab_wheel:           { id:"ab_wheel",           name:"Ab Wheel",                    group:"abs" },
+  mountain_climbers:  { id:"mountain_climbers",  name:"Mountain Climbers",           group:"abs" },
+  dead_bug:           { id:"dead_bug",           name:"Dead Bug",                    group:"abs" },
 };
 
 const SPLITS = {
   pushPull: {
-    label: "Push / Pull / Legs",
+    label: "Push / Pull",
     days: [
-      { title:"Push",   sub:"Chest & shoulders",   main:["incline_bench","bench_press"],           other:["military_press","lateral_raises","triceps_dips","weighted_dips"] },
-      { title:"Pull",   sub:"Back & biceps",        main:["pullups_bw","lat_pulldown"],             other:["db_row","rear_delt_fly","dumbbell_curl","hammer_curl"] },
-      { title:"Legs",   sub:"Squat & posterior",    main:["squat","romanian_deadlift"],             other:["leg_press","adductors","calf_raises","hanging_leg_raises"] },
-      { title:"Upper Mix", sub:"Deadlift & core",   main:["deadlift","plank","bodyweight_exercises"], other:["triceps_pushdowns","preacher_curl","dumbbell_extension"] },
+      { title:"Push",  sub:"Chest & shoulders",  main:["incline_bench","bench_press"],        other:["military_press","lateral_raises","triceps_dips","weighted_dips"] },
+      { title:"Pull",  sub:"Back & biceps",       main:["pullups_bw","lat_pulldown"],          other:["db_row","rear_delt_fly","dumbbell_curl","hammer_curl"] },
+      { title:"Legs",  sub:"Squat & posterior",   main:["squat","romanian_deadlift"],          other:["leg_press","adductors","calf_raises","hanging_leg_raises"] },
     ],
+  },
+  upperLower: {
+    label: "Upper / Lower",
+    days: [
+      { title:"Upper A", sub:"Horizontal push & pull", main:["bench_press","pullups_bw"],       other:["incline_bench","db_row","lateral_raises","triceps_pushdowns"] },
+      { title:"Lower A", sub:"Quad focus",             main:["squat","leg_press"],              other:["bulgarian_split","leg_extension","calf_raises","adductors"] },
+      { title:"Upper B", sub:"Vertical press & pull",  main:["military_press","lat_pulldown"],  other:["arnold_press","seated_cable_rows","ez_bar_curls","skullcrusher"] },
+      { title:"Lower B", sub:"Posterior chain",        main:["deadlift","romanian_deadlift"],   other:["lying_leg_curls","hip_thrust","nordic_curl","hanging_leg_raises"] },
+    ],
+  },
+  fullBody: {
+    label: "Full Body",
+    days: [
+      { title:"Full Body A", sub:"Squat & push",    main:["squat","bench_press"],        other:["lat_pulldown","lateral_raises","ez_bar_curls","calf_raises"] },
+      { title:"Full Body B", sub:"Hinge & pull",    main:["deadlift","pullups_bw"],      other:["romanian_deadlift","incline_bench","triceps_pushdowns","plank"] },
+      { title:"Full Body C", sub:"Knee & press",    main:["leg_press","military_press"], other:["hack_squat","db_row","hammer_curl","face_pulls"] },
+      { title:"Full Body D", sub:"Power & isolate", main:["hip_thrust","weighted_dips"], other:["leg_extension","barbell_row","arnold_press","lying_leg_curls"] },
+    ],
+  },
+  custom: {
+    label: "Custom",
+    days: [],
   },
 };
 
-function exerciseById(id) { return EXERCISES[id] ?? { id, name:id, group:"legs" }; }
+function exerciseById(id) { return EXERCISES[id] ?? { id, name:id, group:"abs" }; }
 
-function getWeeklyTargets(splitKey) {
+function getWeeklyTargets(splitKey, customDays=[]) {
   const t = {}; MUSCLE_GROUPS.forEach(g => t[g] = 0);
-  SPLITS[splitKey].days.forEach(d => [...d.main, ...d.other].forEach(id => {
+  const days = splitKey === 'custom' ? customDays : (SPLITS[splitKey]?.days || []);
+  days.forEach(d => [...(d.main||[]), ...(d.other||[])].forEach(id => {
     const ex = exerciseById(id); if (ex.group) t[ex.group]++;
   }));
   return t;
@@ -169,35 +242,60 @@ function GroupKey({ progress, targets }) {
   );
 }
 
-function ExerciseRow({ ex, checked, onToggle, dashed=false, isMain=false }) {
+const REPS_GUIDE = { legs:"6-10", back:"8-12", chest:"8-12", arms:"10-15", shoulders:"10-15", abs:"15-20" };
+const SETS_MAIN = 4, SETS_ACC = 3;
+
+function ExerciseRow({ ex, checked, onToggle, dashed=false, isMain=false, setsDone=0, setsTarget=3, onSetAdd, onRemove }) {
+  const reps = REPS_GUIDE[ex.group] || "8-12";
   return (
-    <button onClick={onToggle} style={{
-      width:"100%", textAlign:"left", padding:"13px 2px", background:"transparent", border:"none",
-      borderTop: dashed ? "1px dashed var(--rule)" : "1px solid var(--rule)",
-      cursor:"pointer", display:"flex", alignItems:"center", gap:14, fontFamily:"var(--font-body)",
-    }}>
-      <span style={{
-        width:22, height:22, borderRadius:5, flexShrink:0, transition:"all 180ms",
-        border: checked ? "none" : `1.5px solid ${isMain ? MG_COLORS[ex.group] : "var(--ink-30)"}`,
-        background: checked ? MG_COLORS[ex.group] : "transparent",
-        display:"flex", alignItems:"center", justifyContent:"center",
-      }}>
-        {checked && <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-      </span>
-      <div style={{ flex:1, minWidth:0 }}>
-        <div style={{
-          fontFamily:"var(--font-display)", fontSize: isMain ? 21 : 18, letterSpacing:-0.2,
-          color: checked ? "var(--ink-60)" : "var(--ink)",
-          textDecoration: checked ? "line-through" : "none", textDecorationThickness:"1px", lineHeight:1.1,
-          fontWeight: isMain ? 400 : 400,
-        }}>{ex.name}</div>
-        <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.08, color:"var(--ink-60)", textTransform:"uppercase", marginTop:3, display:"flex", gap:8, alignItems:"center" }}>
-          <span style={{ color:MG_COLORS[ex.group] }}>◆ {MG_LABEL[ex.group]}</span>
-          {isMain && <span style={{ color:"var(--ink-30)", letterSpacing:0.12 }}>· MAIN</span>}
-          {dashed && <span style={{ color:"var(--ink-30)" }}>· ADDED</span>}
+    <div style={{ borderTop: dashed ? "1px dashed var(--rule)" : "1px solid var(--rule)", padding:"11px 0 8px" }}>
+      <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+        <button onClick={onToggle} style={{
+          width:22, height:22, borderRadius:5, flexShrink:0, transition:"all 180ms", cursor:"pointer",
+          border: checked ? "none" : `1.5px solid ${isMain ? MG_COLORS[ex.group] : "var(--ink-30)"}`,
+          background: checked ? MG_COLORS[ex.group] : "transparent",
+          display:"flex", alignItems:"center", justifyContent:"center",
+        }}>
+          {checked && <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+        </button>
+        <div style={{ flex:1, minWidth:0 }}>
+          <div style={{
+            fontFamily:"var(--font-display)", fontSize: isMain ? 20 : 17, letterSpacing:-0.2,
+            color: checked ? "var(--ink-60)" : "var(--ink)",
+            textDecoration: checked ? "line-through" : "none", textDecorationThickness:"1px", lineHeight:1.1,
+          }}>{ex.name}</div>
+          <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.08, color:"var(--ink-60)", textTransform:"uppercase", marginTop:2, display:"flex", gap:8, alignItems:"center" }}>
+            <span style={{ color:MG_COLORS[ex.group] }}>◆ {MG_LABEL[ex.group]}</span>
+            {isMain && <span style={{ color:"var(--ink-30)" }}>· MAIN</span>}
+            {dashed && <span style={{ color:"var(--ink-30)" }}>· ADDED</span>}
+          </div>
         </div>
+        {onRemove && (
+          <button onClick={onRemove} title="Remove from today" style={{ width:22, height:22, background:"transparent", border:"1px solid var(--rule)", color:"var(--ink-60)", cursor:"pointer", fontFamily:"var(--font-mono)", fontSize:12, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>×</button>
+        )}
       </div>
-    </button>
+      {onSetAdd && (
+        <div style={{ marginTop:8, display:"flex", alignItems:"center", gap:8, paddingLeft:34 }}>
+          <span style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-60)", letterSpacing:0.1, minWidth:40 }}>{reps} reps</span>
+          <div style={{ display:"flex", gap:4 }}>
+            {Array.from({ length: setsTarget }).map((_, i) => {
+              const done = i < setsDone;
+              return (
+                <button key={i} onClick={onSetAdd} title={`Set ${i+1}`} style={{
+                  width:24, height:24, borderRadius:4, cursor:"pointer", transition:"all 140ms",
+                  background: done ? MG_COLORS[ex.group] : "transparent",
+                  border: `1.5px solid ${done ? MG_COLORS[ex.group] : "var(--ink-30)"}`,
+                  display:"flex", alignItems:"center", justifyContent:"center",
+                }}>
+                  {done && <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2 2.5L8.5 2" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                </button>
+              );
+            })}
+          </div>
+          <span style={{ fontFamily:"var(--font-mono)", fontSize:9, color: setsDone>=setsTarget?"var(--success)":"var(--ink-60)", letterSpacing:0.1 }}>{setsDone}/{setsTarget} sets</span>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -254,20 +352,18 @@ function computeProgress(completions) {
 
 // ── Dashboard ──
 function Dashboard({ state, dispatch, navigate }) {
-  const { activeSplit, completions, completedDays } = state;
-  const splitData = SPLITS[activeSplit];
+  const { activeSplit, completions, completedDays, customPlan, detailedMode } = state;
+  const isCustom = activeSplit === 'custom';
+  const splitData = isCustom ? customPlan : SPLITS[activeSplit];
   const splitCompletions = completions[activeSplit] || [];
   const splitCompletedDays = completedDays[activeSplit] || [];
   const progress = computeProgress(splitCompletions);
-  const targets = getWeeklyTargets(activeSplit);
+  const targets = getWeeklyTargets(activeSplit, customPlan?.days || []);
   const totalDone = Object.values(progress).reduce((a,b)=>a+b,0);
   const totalTarget = Object.values(targets).reduce((a,b)=>a+b,0);
-
   const today = new Date();
   const weekday = ["SUN","MON","TUE","WED","THU","FRI","SAT"][today.getDay()];
   const dateStr = `${weekday} · ${today.toLocaleDateString("en-US",{month:"short",day:"numeric"}).toUpperCase()}`;
-
-  // Next day to do = first day not yet marked complete
   let currentDay = splitData.days.length;
   for (let i=0; i<splitData.days.length; i++) {
     if (!splitCompletedDays.includes(i+1)) { currentDay = i+1; break; }
@@ -275,8 +371,6 @@ function Dashboard({ state, dispatch, navigate }) {
 
   return (
     <div style={{ padding:"8px 24px 100px", fontFamily:"var(--font-body)", color:"var(--ink)" }}>
-
-      {/* Masthead */}
       <div style={{ paddingTop:8 }}>
         <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)" }}>{dateStr}</div>
         <div style={{ fontFamily:"var(--font-display)", fontSize:42, lineHeight:0.95, letterSpacing:-0.035, marginTop:10, fontWeight:400 }}>
@@ -285,60 +379,87 @@ function Dashboard({ state, dispatch, navigate }) {
       </div>
 
       {/* Split toggle */}
-      <div style={{ display:"flex", gap:6, marginTop:16 }}>
+      <div style={{ display:"flex", gap:5, marginTop:16, flexWrap:"wrap" }}>
         {Object.entries(SPLITS).map(([key, s]) => (
           <button key={key} onClick={() => dispatch({ type:"SET_SPLIT", split:key })}
-            style={{
-              flex:1, fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.12,
-              textTransform:"uppercase", padding:"9px 4px",
-              background: activeSplit===key ? "var(--ink)" : "transparent",
-              color: activeSplit===key ? "var(--paper)" : "var(--ink)",
-              border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer",
-              transition:"all 150ms",
-            }}>{s.label}</button>
+            style={{ flex:"1 1 auto", fontFamily:"var(--font-mono)", fontSize:9, letterSpacing:0.1, textTransform:"uppercase", padding:"8px 3px",
+              background: activeSplit===key ? "var(--ink)" : "transparent", color: activeSplit===key ? "var(--paper)" : "var(--ink)",
+              border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer" }}>{s.label}</button>
         ))}
       </div>
 
-      {/* Ring Stack */}
-      <div style={{ marginTop:28, display:"flex", justifyContent:"center" }}>
+      {/* Tracking mode toggle */}
+      <div style={{ marginTop:10, display:"flex", justifyContent:"flex-end", alignItems:"center", gap:8 }}>
+        <span style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.12, textTransform:"uppercase", color:"var(--ink-60)" }}>Tracking</span>
+        <button onClick={() => dispatch({ type:"TOGGLE_DETAILED" })}
+          style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.1, textTransform:"uppercase", padding:"4px 10px",
+            background: detailedMode ? "var(--accent)" : "transparent", color: detailedMode ? "#fff" : "var(--ink-60)",
+            border:`1px solid ${detailedMode?"var(--accent)":"var(--ink-30)"}`, borderRadius:0, cursor:"pointer" }}>
+          {detailedMode ? "Detailed" : "Simple"}
+        </button>
+      </div>
+
+      {/* Ring */}
+      <div style={{ marginTop:20, display:"flex", justifyContent:"center" }}>
         <div style={{ position:"relative", width:260, height:260 }}>
           <RingStack progress={progress} targets={targets} size={260} strokeWidth={9} gap={3}/>
           <div style={{ position:"absolute", inset:0, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center" }}>
             <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.2, textTransform:"uppercase", color:"var(--ink-60)" }}>Week Volume</div>
             <div style={{ fontFamily:"var(--font-display)", fontSize:68, lineHeight:0.85, letterSpacing:-0.05, marginTop:8, fontVariantNumeric:"tabular-nums", fontWeight:400 }}>{totalDone}</div>
-            <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.12, color:"var(--ink-60)", marginTop:2 }}>of {totalTarget} sets</div>
+            <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.12, color:"var(--ink-60)", marginTop:2 }}>of {totalTarget}</div>
           </div>
         </div>
       </div>
-
-      {/* Group key */}
       <div style={{ marginTop:20 }}><GroupKey progress={progress} targets={targets}/></div>
 
-      {/* Day cards */}
-      <Rule label={`${splitData.label} · ${splitCompletedDays.length < splitData.days.length ? "Day "+currentDay+" on deck" : "Week Complete"}`}/>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
-        {splitData.days.map((plan, i) => {
-          const d = i+1;
-          const dayComp = splitCompletions.filter(c=>c.day===d && c.slot<1000).length;
-          const dayExtra = splitCompletions.filter(c=>c.day===d && c.slot>=1000).length;
-          const total = plan.main.length + plan.other.length + dayExtra;
-          const isDone = splitCompletedDays.includes(d);
-          return (
-            <DayCard key={d} day={d} plan={plan} dayColor={DAY_COLORS[i]}
-              completed={dayComp+dayExtra} total={total}
-              isCurrent={d===currentDay && !isDone} isDone={isDone}
-              onClick={() => navigate({ screen:"day", dayId:d })}/>
-          );
-        })}
-      </div>
+      {/* Day cards — custom or regular */}
+      {isCustom ? (
+        <>
+          <Rule label="My Custom Split"/>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+            {customPlan.days.map((plan, i) => {
+              const d = i+1;
+              const dayExtra = splitCompletions.filter(c=>c.day===d&&c.slot>=1000).length;
+              const isDone = splitCompletedDays.includes(d);
+              return (
+                <div key={d} style={{ position:"relative" }}>
+                  <DayCard day={d} plan={{...plan,main:plan.main||[],other:plan.other||[]}} dayColor={DAY_COLORS[i%DAY_COLORS.length]}
+                    completed={dayExtra} total={Math.max(dayExtra,1)} isCurrent={d===currentDay&&!isDone} isDone={isDone}
+                    onClick={() => navigate({ screen:"day", dayId:d })}/>
+                  <button onClick={() => { if(window.confirm(`Remove ${plan.title}?`)) dispatch({ type:"REMOVE_CUSTOM_DAY", index:i }); }}
+                    style={{ position:"absolute", top:4, right:4, width:20, height:20, background:"rgba(0,0,0,0.7)", color:"#fff", border:"none", cursor:"pointer", fontFamily:"var(--font-mono)", fontSize:11, display:"flex", alignItems:"center", justifyContent:"center", zIndex:1 }}>×</button>
+                </div>
+              );
+            })}
+          </div>
+          <button onClick={() => { const t=window.prompt("Day name:", `Day ${customPlan.days.length+1}`)||`Day ${customPlan.days.length+1}`; dispatch({ type:"ADD_CUSTOM_DAY", title:t }); }}
+            style={{ width:"100%", marginTop:10, fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.14, textTransform:"uppercase", padding:"14px", background:"transparent", color:"var(--ink)", border:"1px dashed var(--ink)", cursor:"pointer", borderRadius:0 }}>
+            + Add Day
+          </button>
+        </>
+      ) : (
+        <>
+          <Rule label={`${splitData.label} · ${splitCompletedDays.length < splitData.days.length ? "Day "+currentDay+" on deck" : "Week Complete"}`}/>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+            {splitData.days.map((plan, i) => {
+              const d = i+1;
+              const dayComp = splitCompletions.filter(c=>c.day===d&&c.slot<1000).length;
+              const dayExtra = splitCompletions.filter(c=>c.day===d&&c.slot>=1000).length;
+              const total = plan.main.length + plan.other.length + dayExtra;
+              const isDone = splitCompletedDays.includes(d);
+              return <DayCard key={d} day={d} plan={plan} dayColor={DAY_COLORS[i%DAY_COLORS.length]}
+                completed={dayComp+dayExtra} total={total} isCurrent={d===currentDay&&!isDone} isDone={isDone}
+                onClick={() => navigate({ screen:"day", dayId:d })}/>;
+            })}
+          </div>
+        </>
+      )}
 
       {/* Volume bars */}
       <Rule label="Volume By Group"/>
       <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
         {MUSCLE_GROUPS.map(g => {
-          const target = targets[g] || 0;
-          const done = progress[g] || 0;
-          const pct = target ? done/target : 0;
+          const target = targets[g]||0, done = progress[g]||0, pct = target ? done/target : 0;
           return (
             <div key={g}>
               <div style={{ display:"flex", justifyContent:"space-between", alignItems:"baseline" }}>
@@ -347,8 +468,7 @@ function Dashboard({ state, dispatch, navigate }) {
                   <span style={{ fontFamily:"var(--font-display)", fontSize:16, letterSpacing:-0.1 }}>{MG_LABEL[g]}</span>
                 </div>
                 <div style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.08, color:"var(--ink-60)", fontVariantNumeric:"tabular-nums" }}>
-                  {done}/{target}
-                  <span style={{ marginLeft:8, color: pct>=1?"var(--success)":"var(--accent)" }}>{pct>=1?"DONE":"LAGGING"}</span>
+                  {done}/{target}<span style={{ marginLeft:8, color:pct>=1?"var(--success)":"var(--accent)" }}>{pct>=1?"DONE":"LAGGING"}</span>
                 </div>
               </div>
               <div style={{ height:5, background:"var(--rule)", marginTop:5, position:"relative" }}>
@@ -359,7 +479,6 @@ function Dashboard({ state, dispatch, navigate }) {
         })}
       </div>
 
-      {/* Footer */}
       <div style={{ marginTop:28, paddingTop:14, borderTop:"1px solid var(--ink)", display:"flex", justifyContent:"flex-end" }}>
         <span onClick={() => dispatch({ type:"RESET_SPLIT" })} style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)", cursor:"pointer", borderBottom:"1px solid var(--ink-60)" }}>Reset Week</span>
       </div>
@@ -368,39 +487,61 @@ function Dashboard({ state, dispatch, navigate }) {
 }
 
 // ── Day Screen ──
-function DayScreen({ state, dispatch, navigate, dayId }) {
-  const { activeSplit, completions, completedDays } = state;
-  const splitData = SPLITS[activeSplit];
-  const plan = splitData.days[dayId-1];
+function DayScreen({ state, dispatch, navigate, dayId, isPro=false, setShowPaywall }) {
+  const { activeSplit, completions, completedDays, setsLog, hiddenSlots, customPlan, detailedMode } = state;
+  const isCustom = activeSplit === 'custom';
+  const splitData = isCustom ? customPlan : SPLITS[activeSplit];
+  const plan = splitData.days[dayId-1] || { title:`Day ${dayId}`, sub:"", main:[], other:[] };
   const splitCompletions = completions[activeSplit] || [];
   const splitCompletedDays = completedDays[activeSplit] || [];
+  const splitSets = (setsLog||{})[activeSplit] || {};
+  const dayHidden = ((hiddenSlots||{})[activeSplit]||{})[dayId] || [];
+  const [searchQ, setSearchQ] = useState("");
 
-  const plannedDone = new Set(splitCompletions.filter(c=>c.day===dayId && c.slot<1000).map(c=>c.slot));
-  const extras = splitCompletions.filter(c=>c.day===dayId && c.slot>=1000).sort((a,b)=>a.slot-b.slot);
+  const mainIds = plan.main || [], otherIds = plan.other || [];
+  const allPlanIds = [...mainIds, ...otherIds];
+  const plannedDone = new Set(splitCompletions.filter(c=>c.day===dayId&&c.slot<1000).map(c=>c.slot));
+  const extras = splitCompletions.filter(c=>c.day===dayId&&c.slot>=1000).sort((a,b)=>a.slot-b.slot);
   const extraIds = new Set(extras.map(c=>c.id));
 
-  const allIds = [...plan.main, ...plan.other];
-  const totalCount = allIds.length + extras.length;
-  const doneCount = plannedDone.size + extras.length;
+  const visibleMainCount = mainIds.filter((_,i)=>!dayHidden.includes(i)).length;
+  const visibleOtherCount = otherIds.filter((_,i)=>!dayHidden.includes(mainIds.length+i)).length;
+  const totalCount = visibleMainCount + visibleOtherCount + extras.length;
+  const doneCount = [...plannedDone].filter(s=>!dayHidden.includes(s)).length + extras.length;
   const pct = totalCount ? doneCount/totalCount : 0;
   const isDone = splitCompletedDays.includes(dayId);
 
-  // Catalog: exercises NOT in today's plan
-  const todaySet = new Set(allIds);
-  const catalog = {};
-  MUSCLE_GROUPS.forEach(g => catalog[g]=[]);
-  Object.values(EXERCISES).forEach(ex => { if (!todaySet.has(ex.id)) catalog[ex.group].push(ex); });
+  // Week progress for lagging calc
+  const weekProg = {}; MUSCLE_GROUPS.forEach(g=>weekProg[g]=0);
+  splitCompletions.forEach(c=>{ const ex=exerciseById(c.id); if(ex.group) weekProg[ex.group]++; });
+  const weekTargets = getWeeklyTargets(activeSplit, customPlan?.days||[]);
+  const todayGroupsCovered = new Set(allPlanIds.map(id=>exerciseById(id).group));
+  const laggingGroups = MUSCLE_GROUPS.filter(g => {
+    const t=weekTargets[g]||0; if(!t) return false;
+    return (weekProg[g]||0)/t < 0.6 && !todayGroupsCovered.has(g);
+  });
+  const laggingRecs = {};
+  laggingGroups.forEach(g => {
+    laggingRecs[g] = Object.values(EXERCISES).filter(ex=>ex.group===g&&!allPlanIds.includes(ex.id)).slice(0,5);
+  });
+
+  // Catalog
+  const inPlanSet = new Set(allPlanIds);
+  const q = searchQ.trim().toLowerCase();
+  const catalogByGroup = {};
+  MUSCLE_GROUPS.forEach(g => catalogByGroup[g]=[]);
+  Object.values(EXERCISES).forEach(ex => { if(!inPlanSet.has(ex.id)) catalogByGroup[ex.group].push(ex); });
+  const filteredCatalog = {};
+  MUSCLE_GROUPS.forEach(g => { filteredCatalog[g] = q ? catalogByGroup[g].filter(ex=>ex.name.toLowerCase().includes(q)) : catalogByGroup[g]; });
+  const catalogHasResults = MUSCLE_GROUPS.some(g=>filteredCatalog[g].length>0);
+
+  const getSets = (slot, tgt) => ({ done: splitSets[`${dayId}_${slot}`]||0, target:tgt });
 
   return (
     <div style={{ padding:"8px 24px 120px", fontFamily:"var(--font-body)", color:"var(--ink)" }}>
-
       {/* Header */}
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:4 }}>
-        <button onClick={() => navigate({ screen:"home" })} style={{
-          background:"var(--paper)", cursor:"pointer", border:"1px solid var(--ink)",
-          fontFamily:"var(--font-mono)", fontSize:10.5, letterSpacing:0.16,
-          textTransform:"uppercase", color:"var(--ink)", padding:"6px 10px",
-        }}>← Back to Log</button>
+        <button onClick={() => navigate({ screen:"home" })} style={{ background:"var(--paper)", cursor:"pointer", border:"1px solid var(--ink)", fontFamily:"var(--font-mono)", fontSize:10.5, letterSpacing:0.16, textTransform:"uppercase", color:"var(--ink)", padding:"6px 10px" }}>← Back</button>
         <div style={{ display:"flex", gap:8, fontFamily:"var(--font-mono)", fontSize:10.5, letterSpacing:0.14, textTransform:"uppercase", color:"var(--ink-60)" }}>
           {dayId>1 && <span onClick={()=>navigate({screen:"day",dayId:dayId-1})} style={{ cursor:"pointer" }}>‹ Prev</span>}
           {dayId<splitData.days.length && <span onClick={()=>navigate({screen:"day",dayId:dayId+1})} style={{ cursor:"pointer" }}>Next ›</span>}
@@ -409,15 +550,15 @@ function DayScreen({ state, dispatch, navigate, dayId }) {
 
       {/* Folio */}
       <div style={{ marginTop:16, display:"flex", alignItems:"flex-end", gap:14 }}>
-        <div style={{ fontFamily:"var(--font-display)", fontSize:130, lineHeight:0.82, letterSpacing:-0.06, fontVariantNumeric:"tabular-nums", fontWeight:400, fontStyle:"italic", color:DAY_COLORS[dayId-1] }}>{dayId}</div>
+        <div style={{ fontFamily:"var(--font-display)", fontSize:130, lineHeight:0.82, letterSpacing:-0.06, fontVariantNumeric:"tabular-nums", fontWeight:400, fontStyle:"italic", color:DAY_COLORS[(dayId-1)%DAY_COLORS.length] }}>{dayId}</div>
         <div style={{ paddingBottom:10, flex:1 }}>
-          <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)" }}>Day {dayId} · {SPLITS[activeSplit].label}</div>
+          <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)" }}>{SPLITS[activeSplit]?.label||"Custom"}</div>
           <div style={{ fontFamily:"var(--font-display)", fontSize:22, letterSpacing:-0.15, marginTop:4, lineHeight:1.1 }}>{plan.title}</div>
           <div style={{ fontFamily:"var(--font-body)", fontSize:12.5, color:"var(--ink-60)", marginTop:3, fontStyle:"italic" }}>{plan.sub}</div>
         </div>
       </div>
 
-      {/* Progress bar */}
+      {/* Progress */}
       <div style={{ marginTop:14, display:"flex", alignItems:"center", gap:12 }}>
         <div style={{ flex:1, height:2, background:"var(--rule)", position:"relative" }}>
           <div style={{ position:"absolute", inset:0, width:`${pct*100}%`, background:"var(--ink)", transition:"width 400ms ease" }}/>
@@ -425,37 +566,85 @@ function DayScreen({ state, dispatch, navigate, dayId }) {
         <div style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.1, fontVariantNumeric:"tabular-nums" }}>{doneCount}/{totalCount}</div>
       </div>
 
-      {/* Main exercises */}
-      <Rule label="Main"/>
-      <div>
-        {plan.main.map((id, slot) => {
-          const ex = exerciseById(id);
-          return <ExerciseRow key={`m-${slot}`} ex={ex} isMain checked={plannedDone.has(slot)}
-            onToggle={() => dispatch({ type: plannedDone.has(slot)?"UNCHECK":"CHECK", split:activeSplit, day:dayId, slot, id })}/>;
-        })}
-      </div>
+      {/* Main */}
+      {mainIds.length > 0 && <Rule label="Main"/>}
+      {mainIds.map((id, i) => {
+        if (dayHidden.includes(i)) return null;
+        const ex = exerciseById(id);
+        const s = getSets(i, SETS_MAIN);
+        return <ExerciseRow key={`m-${i}`} ex={ex} isMain checked={plannedDone.has(i)}
+          onToggle={() => dispatch({ type:plannedDone.has(i)?"UNCHECK":"CHECK", split:activeSplit, day:dayId, slot:i, id })}
+          setsDone={s.done} setsTarget={s.target}
+          onSetAdd={detailedMode ? ()=>dispatch({ type:"ADD_SET", split:activeSplit, day:dayId, slot:i, target:SETS_MAIN }) : null}
+          onRemove={() => dispatch({ type:"HIDE_SLOT", split:activeSplit, day:dayId, slot:i })}/>;
+      })}
 
-      {/* Other exercises */}
-      <Rule label="Accessory"/>
-      <div>
-        {plan.other.map((id, i) => {
-          const slot = plan.main.length + i;
-          const ex = exerciseById(id);
-          return <ExerciseRow key={`o-${i}`} ex={ex} checked={plannedDone.has(slot)}
-            onToggle={() => dispatch({ type: plannedDone.has(slot)?"UNCHECK":"CHECK", split:activeSplit, day:dayId, slot, id })}/>;
-        })}
-        {extras.map(c => (
-          <ExerciseRow key={`e-${c.slot}`} ex={exerciseById(c.id)} checked dashed
-            onToggle={() => dispatch({ type:"REMOVE_EXTRA", split:activeSplit, day:dayId, slot:c.slot })}/>
-        ))}
-        <div style={{ borderTop:"1px solid var(--ink)" }}/>
-      </div>
+      {/* Secondary */}
+      {(otherIds.length > 0 || extras.length > 0) && <Rule label="Secondary"/>}
+      {otherIds.map((id, i) => {
+        const slot = mainIds.length + i;
+        if (dayHidden.includes(slot)) return null;
+        const ex = exerciseById(id);
+        const s = getSets(slot, SETS_ACC);
+        return <ExerciseRow key={`o-${i}`} ex={ex} checked={plannedDone.has(slot)}
+          onToggle={() => dispatch({ type:plannedDone.has(slot)?"UNCHECK":"CHECK", split:activeSplit, day:dayId, slot, id })}
+          setsDone={s.done} setsTarget={s.target}
+          onSetAdd={detailedMode ? ()=>dispatch({ type:"ADD_SET", split:activeSplit, day:dayId, slot, target:SETS_ACC }) : null}
+          onRemove={() => dispatch({ type:"HIDE_SLOT", split:activeSplit, day:dayId, slot })}/>;
+      })}
+      {extras.map(c => {
+        const s = getSets(c.slot, SETS_ACC);
+        return <ExerciseRow key={`e-${c.slot}`} ex={exerciseById(c.id)} checked dashed
+          onToggle={() => dispatch({ type:"REMOVE_EXTRA", split:activeSplit, day:dayId, slot:c.slot })}
+          setsDone={s.done} setsTarget={s.target}
+          onSetAdd={detailedMode ? ()=>dispatch({ type:"ADD_SET", split:activeSplit, day:dayId, slot:c.slot, target:SETS_ACC }) : null}/>;
+      })}
+      {(mainIds.length > 0 || otherIds.length > 0 || extras.length > 0) && <div style={{ borderTop:"1px solid var(--ink)" }}/>}
 
-      {/* Catalog */}
+      {/* Lagging muscles */}
+      {laggingGroups.length > 0 && (
+        <>
+          <Rule label="Fill the Gap · Lagging This Week"/>
+          {laggingGroups.map(g => (
+            <div key={g} style={{ marginBottom:14 }}>
+              <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.14, textTransform:"uppercase", display:"flex", alignItems:"center", gap:6, marginBottom:6 }}>
+                <span style={{ width:6,height:6,borderRadius:999,background:MG_COLORS[g],flexShrink:0 }}/>
+                <span style={{ color:MG_COLORS[g] }}>{MG_LABEL[g]}</span>
+                <span style={{ color:"var(--ink-60)" }}>· {weekProg[g]||0}/{weekTargets[g]||0} done</span>
+              </div>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:6 }}>
+                {laggingRecs[g].map(ex => {
+                  const on = extraIds.has(ex.id);
+                  return <button key={ex.id} onClick={() => dispatch({ type:on?"REMOVE_EXTRA_BY_ID":"ADD_EXTRA", split:activeSplit, day:dayId, id:ex.id })}
+                    style={{ fontFamily:"var(--font-body)", fontSize:12.5, padding:"5px 10px", background:on?"var(--accent)":"transparent", color:on?"#fff":"var(--ink)", border:`1px solid ${on?"var(--accent)":"var(--ink)"}`, borderRadius:0, cursor:"pointer" }}>
+                    {on?"✓ ":"+ "}{ex.name}
+                  </button>;
+                })}
+              </div>
+            </div>
+          ))}
+          {!isPro && (
+            <div style={{ border:"1px dashed var(--accent)", padding:"13px 14px", display:"flex", justifyContent:"space-between", alignItems:"center", gap:12, marginBottom:6 }}>
+              <div>
+                <div style={{ fontFamily:"var(--font-display)", fontSize:15, letterSpacing:-0.1 }}>Smart Auto-Balance</div>
+                <div style={{ fontFamily:"var(--font-mono)", fontSize:9, letterSpacing:0.1, color:"var(--ink-60)", textTransform:"uppercase", marginTop:3 }}>Adapts to machine availability · Pro</div>
+              </div>
+              <button onClick={() => setShowPaywall && setShowPaywall(true)}
+                style={{ flexShrink:0, fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.12, textTransform:"uppercase", padding:"8px 12px", background:"var(--accent)", color:"#fff", border:"none", cursor:"pointer" }}>
+                Upgrade →
+              </button>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* Catalog with search */}
       <Rule label="Catalog · Tap to Add"/>
+      <input type="text" placeholder="Search exercises…" value={searchQ} onChange={e=>setSearchQ(e.target.value)}
+        style={{ width:"100%", fontFamily:"var(--font-mono)", fontSize:12, padding:"9px 12px", border:"1px solid var(--ink-30)", background:"transparent", color:"var(--ink)", outline:"none", boxSizing:"border-box", letterSpacing:0.08, marginBottom:14 }}/>
       <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
-        {MUSCLE_GROUPS.map(g => {
-          const list = catalog[g]; if(!list.length) return null;
+        {catalogHasResults ? MUSCLE_GROUPS.map(g => {
+          const list = filteredCatalog[g]; if(!list.length) return null;
           return (
             <div key={g}>
               <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.16, textTransform:"uppercase", display:"flex", alignItems:"center", gap:6, color:"var(--ink)", marginBottom:5 }}>
@@ -463,59 +652,241 @@ function DayScreen({ state, dispatch, navigate, dayId }) {
               </div>
               <div style={{ display:"flex", flexWrap:"wrap", gap:6 }}>
                 {list.map(ex => {
-                  const checked = extraIds.has(ex.id);
-                  return (
-                    <button key={ex.id} onClick={() => dispatch({ type:checked?"REMOVE_EXTRA_BY_ID":"ADD_EXTRA", split:activeSplit, day:dayId, id:ex.id })}
-                      style={{ fontFamily:"var(--font-body)", fontSize:12.5, padding:"5px 10px", background:checked?"var(--ink)":"transparent", color:checked?"var(--paper)":"var(--ink)", border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer" }}>
-                      {checked?"✓ ":"+ "}{ex.name}
-                    </button>
-                  );
+                  const on = extraIds.has(ex.id);
+                  return <button key={ex.id} onClick={() => dispatch({ type:on?"REMOVE_EXTRA_BY_ID":"ADD_EXTRA", split:activeSplit, day:dayId, id:ex.id })}
+                    style={{ fontFamily:"var(--font-body)", fontSize:12.5, padding:"5px 10px", background:on?"var(--ink)":"transparent", color:on?"var(--paper)":"var(--ink)", border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer" }}>
+                    {on?"✓ ":"+ "}{ex.name}
+                  </button>;
                 })}
               </div>
             </div>
           );
-        })}
+        }) : <div style={{ fontFamily:"var(--font-mono)", fontSize:11, color:"var(--ink-60)", padding:"16px 0" }}>No results for "{searchQ}"</div>}
       </div>
 
-      {/* Complete / Reset Week button */}
+      {/* Complete / Reset */}
       <div style={{ marginTop:32, display:"flex", gap:10 }}>
         {dayId < splitData.days.length ? (
-          !isDone ? (
-            <button onClick={() => { dispatch({ type:"COMPLETE_DAY", split:activeSplit, day:dayId }); navigate({ screen:"day", dayId:dayId+1 }); }}
-              style={{
-                flex:1, fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:0.16,
-                textTransform:"uppercase", padding:"16px",
-                background:"var(--ink)", color:"var(--paper)",
-                border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer",
-              }}>
-              ✓ Complete Day {dayId}
-            </button>
-          ) : (
-            <div style={{ flex:1, fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.16, textTransform:"uppercase", padding:"16px", background:"var(--accent)", color:"#fff", textAlign:"center" }}>
-              Day {dayId} Done
-            </div>
-          )
+          !isDone
+            ? <button onClick={() => { dispatch({ type:"COMPLETE_DAY", split:activeSplit, day:dayId }); navigate({ screen:"day", dayId:dayId+1 }); }}
+                style={{ flex:1, fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:0.16, textTransform:"uppercase", padding:"16px", background:"var(--ink)", color:"var(--paper)", border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer" }}>✓ Complete Day {dayId}</button>
+            : <div style={{ flex:1, fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.16, textTransform:"uppercase", padding:"16px", background:"var(--accent)", color:"#fff", textAlign:"center" }}>Day {dayId} Done</div>
         ) : (
           <button onClick={() => { dispatch({ type:"RESET_SPLIT", split:activeSplit }); navigate({ screen:"home" }); }}
-            style={{
-              flex:1, fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:0.16,
-              textTransform:"uppercase", padding:"16px",
-              background:"var(--ink)", color:"var(--paper)",
-              border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer",
-            }}>
-            ↺ Reset Week
-          </button>
+            style={{ flex:1, fontFamily:"var(--font-mono)", fontSize:11.5, letterSpacing:0.16, textTransform:"uppercase", padding:"16px", background:"var(--ink)", color:"var(--paper)", border:"1px solid var(--ink)", borderRadius:0, cursor:"pointer" }}>↺ Reset Week</button>
         )}
         <button onClick={() => dispatch({ type:"RESET_DAY", split:activeSplit, day:dayId })}
-          style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.12, textTransform:"uppercase", padding:"16px 14px", background:"transparent", color:"var(--ink)", border:"1px solid var(--rule)", borderRadius:0, cursor:"pointer" }}>
-          Reset
-        </button>
+          style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.12, textTransform:"uppercase", padding:"16px 14px", background:"transparent", color:"var(--ink)", border:"1px solid var(--rule)", borderRadius:0, cursor:"pointer" }}>Reset</button>
       </div>
     </div>
   );
 }
 
-Object.assign(window, { Dashboard, DayScreen, computeProgress });
+function PaywallModal({ onClose, onUpgrade }) {
+  return (
+    <div style={{ position:"fixed", inset:0, background:"rgba(0,0,0,0.55)", zIndex:300, display:"flex", alignItems:"flex-end", justifyContent:"center" }} onClick={onClose}>
+      <div onClick={e=>e.stopPropagation()} style={{ background:"var(--paper)", width:"100%", maxWidth:440, padding:"30px 26px 48px", boxSizing:"border-box", borderRadius:"20px 20px 0 0", color:"var(--ink)", fontFamily:"var(--font-body)" }}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:6 }}>
+          <div>
+            <div style={{ fontFamily:"var(--font-display)", fontSize:28, letterSpacing:-0.2, lineHeight:1 }}><span style={{ fontStyle:"italic" }}>Training</span> Pro</div>
+            <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, letterSpacing:0.14, textTransform:"uppercase", color:"var(--ink-60)", marginTop:5 }}>Unlock the full experience</div>
+          </div>
+          <button onClick={onClose} style={{ background:"transparent", border:"1px solid var(--rule)", fontFamily:"var(--font-mono)", fontSize:14, color:"var(--ink-60)", cursor:"pointer", width:30, height:30, display:"flex", alignItems:"center", justifyContent:"center" }}>×</button>
+        </div>
+        <div style={{ height:1, background:"var(--rule)", margin:"20px 0" }}/>
+        {[
+          { label:"Unlimited custom splits", sub:"Build and save as many routines as you need" },
+          { label:"Smart Auto-Balance", sub:"AI adjusts your week based on machine availability & frequency" },
+          { label:"Advanced Analytics", sub:"Volume trends, lift PRs, fatigue patterns over time" },
+        ].map((f,i) => (
+          <div key={i} style={{ display:"flex", gap:14, marginBottom:16, alignItems:"flex-start" }}>
+            <div style={{ width:6, height:6, borderRadius:999, background:"var(--accent)", flexShrink:0, marginTop:7 }}/>
+            <div>
+              <div style={{ fontFamily:"var(--font-display)", fontSize:16, letterSpacing:-0.1 }}>{f.label}</div>
+              <div style={{ fontFamily:"var(--font-body)", fontSize:12, color:"var(--ink-60)", marginTop:2, fontStyle:"italic" }}>{f.sub}</div>
+            </div>
+          </div>
+        ))}
+        <div style={{ marginTop:26 }}>
+          <button onClick={onUpgrade} style={{ width:"100%", fontFamily:"var(--font-mono)", fontSize:12, letterSpacing:0.18, textTransform:"uppercase", padding:"17px", background:"var(--ink)", color:"var(--paper)", border:"none", cursor:"pointer", borderRadius:0 }}>
+            Start Pro — $0.99 AUD / month
+          </button>
+          <div style={{ fontFamily:"var(--font-mono)", fontSize:9.5, textAlign:"center", color:"var(--ink-60)", marginTop:10, letterSpacing:0.1 }}>
+            or $9.99 AUD / year · Cancel anytime
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AnalyticsScreen({ state, dispatch, navigate }) {
+  const { weekHistory=[], bodyLog=[], activeSplit, customPlan } = state;
+  const [weightInput, setWeightInput] = useState("");
+
+  const totalChecked = weekHistory.reduce((s,w)=>s+w.completions.filter(c=>c.slot<1000).length,0);
+  const splitCounts = {};
+  weekHistory.forEach(w => splitCounts[w.split]=(splitCounts[w.split]||0)+1);
+  const favSplitEntry = Object.entries(splitCounts).sort((a,b)=>b[1]-a[1])[0];
+  const favSplitLabel = favSplitEntry ? (SPLITS[favSplitEntry[0]]?.label||"Custom").split("/")[0].trim() : "—";
+
+  const exerciseFreq = {};
+  weekHistory.forEach(w => w.completions.filter(c=>c.slot<1000).forEach(c=>{
+    exerciseFreq[c.id]=(exerciseFreq[c.id]||0)+1;
+  }));
+
+  const topExercises = Object.entries(exerciseFreq).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  const splitDays = activeSplit==='custom' ? (customPlan?.days||[]) : (SPLITS[activeSplit]?.days||[]);
+  const planIds = [...new Set(splitDays.flatMap(d=>[...(d.main||[]),...(d.other||[])]))];
+  const leastDone = planIds.map(id=>({id,count:exerciseFreq[id]||0})).sort((a,b)=>a.count-b.count).slice(0,5);
+
+  const muscleVol = {};
+  MUSCLE_GROUPS.forEach(g=>muscleVol[g]=0);
+  weekHistory.forEach(w=>w.completions.filter(c=>c.slot<1000).forEach(c=>{
+    const ex=exerciseById(c.id); if(ex.group) muscleVol[ex.group]++;
+  }));
+  const maxVol = Math.max(1,...Object.values(muscleVol));
+
+  const handleLogWeight = () => {
+    const kg = parseFloat(weightInput);
+    if (!kg || isNaN(kg)) return;
+    dispatch({ type:"LOG_BODY_WEIGHT", kg });
+    setWeightInput("");
+  };
+
+  return (
+    <div style={{ padding:"8px 24px 120px", fontFamily:"var(--font-body)", color:"var(--ink)" }}>
+      <div style={{ paddingTop:8 }}>
+        <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.18, textTransform:"uppercase", color:"var(--ink-60)" }}>Progress</div>
+        <div style={{ fontFamily:"var(--font-display)", fontSize:42, lineHeight:0.95, letterSpacing:-0.035, marginTop:10 }}>
+          <span style={{ fontStyle:"italic" }}>Analytics</span>
+        </div>
+      </div>
+
+      {weekHistory.length === 0 ? (
+        <div style={{ marginTop:60, textAlign:"center", color:"var(--ink-60)" }}>
+          <div style={{ fontFamily:"var(--font-display)", fontSize:18, fontStyle:"italic", marginBottom:8 }}>No data yet</div>
+          <div style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:0.14, textTransform:"uppercase" }}>Complete your first week to see analytics</div>
+        </div>
+      ) : (
+        <>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:8, marginTop:24 }}>
+            {[{ label:"Weeks", value:weekHistory.length },{ label:"Exercises", value:totalChecked },{ label:"Fav Split", value:favSplitLabel }].map(s=>(
+              <div key={s.label} style={{ border:"1px solid var(--rule)", padding:"14px 10px", textAlign:"center" }}>
+                <div style={{ fontFamily:"var(--font-display)", fontSize:26, letterSpacing:-0.05, lineHeight:1 }}>{s.value}</div>
+                <div style={{ fontFamily:"var(--font-mono)", fontSize:9, letterSpacing:0.14, textTransform:"uppercase", color:"var(--ink-60)", marginTop:5 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <Rule label="All-Time Volume"/>
+          <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+            {MUSCLE_GROUPS.map(g=>(
+              <div key={g}>
+                <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:7 }}>
+                    <span style={{ width:6,height:6,borderRadius:999,background:MG_COLORS[g] }}/>
+                    <span style={{ fontFamily:"var(--font-body)", fontSize:13 }}>{MG_LABEL[g]}</span>
+                  </div>
+                  <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-60)", fontVariantNumeric:"tabular-nums" }}>{muscleVol[g]} sets</span>
+                </div>
+                <div style={{ height:5, background:"var(--rule)" }}>
+                  <div style={{ height:"100%", width:`${(muscleVol[g]/maxVol)*100}%`, background:MG_COLORS[g], transition:"width 500ms ease" }}/>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {topExercises.length > 0 && (
+            <>
+              <Rule label="Most Done"/>
+              {topExercises.map(([id,count],i)=>{
+                const ex=exerciseById(id);
+                return (
+                  <div key={id} style={{ display:"flex", alignItems:"center", gap:12, padding:"10px 0", borderTop:i===0?"none":"1px solid var(--rule)" }}>
+                    <span style={{ fontFamily:"var(--font-mono)", fontSize:11, color:"var(--ink-60)", width:18, textAlign:"right", flexShrink:0 }}>#{i+1}</span>
+                    <div style={{ flex:1, minWidth:0 }}>
+                      <div style={{ fontFamily:"var(--font-display)", fontSize:16 }}>{ex.name}</div>
+                      <div style={{ fontFamily:"var(--font-mono)", fontSize:9, color:MG_COLORS[ex.group], textTransform:"uppercase", letterSpacing:0.1, marginTop:2 }}>◆ {MG_LABEL[ex.group]}</div>
+                    </div>
+                    <span style={{ fontFamily:"var(--font-mono)", fontSize:14, fontVariantNumeric:"tabular-nums", flexShrink:0 }}>{count}×</span>
+                  </div>
+                );
+              })}
+            </>
+          )}
+
+          {leastDone.length > 0 && (
+            <>
+              <Rule label="Rarely Done · Explore These"/>
+              {leastDone.map(({id,count},i)=>{
+                const ex=exerciseById(id);
+                return (
+                  <div key={id} style={{ display:"flex", alignItems:"center", gap:12, padding:"10px 0", borderTop:i===0?"none":"1px solid var(--rule)" }}>
+                    <div style={{ flex:1, minWidth:0 }}>
+                      <div style={{ fontFamily:"var(--font-display)", fontSize:16 }}>{ex.name}</div>
+                      <div style={{ fontFamily:"var(--font-mono)", fontSize:9, color:MG_COLORS[ex.group], textTransform:"uppercase", letterSpacing:0.1, marginTop:2 }}>◆ {MG_LABEL[ex.group]}</div>
+                    </div>
+                    <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-60)" }}>{count===0?"never":`${count}×`}</span>
+                  </div>
+                );
+              })}
+            </>
+          )}
+
+          <Rule label="Week History"/>
+          <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+            {[...weekHistory].reverse().map((w,i)=>{
+              const d=new Date(w.completedAt);
+              const dateStr=d.toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"});
+              const total=w.completions.filter(c=>c.slot<1000).length;
+              return (
+                <div key={w.id} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"12px 14px", border:"1px solid var(--rule)" }}>
+                  <div>
+                    <div style={{ fontFamily:"var(--font-display)", fontSize:15 }}>Week {weekHistory.length-i} · {SPLITS[w.split]?.label||"Custom"}</div>
+                    <div style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-60)", letterSpacing:0.1, textTransform:"uppercase", marginTop:3 }}>{dateStr}</div>
+                  </div>
+                  <div style={{ fontFamily:"var(--font-mono)", fontSize:12, color:"var(--ink-60)", fontVariantNumeric:"tabular-nums" }}>{total} exercises</div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+      <Rule label="Body Weight"/>
+      <div style={{ display:"flex", gap:8, marginBottom:12 }}>
+        <input type="number" placeholder="kg" value={weightInput} onChange={e=>setWeightInput(e.target.value)}
+          onKeyDown={e=>e.key==="Enter"&&handleLogWeight()}
+          style={{ flex:1, fontFamily:"var(--font-mono)", fontSize:15, padding:"11px 12px", border:"1px solid var(--ink-30)", background:"transparent", color:"var(--ink)", outline:"none", boxSizing:"border-box" }}/>
+        <button onClick={handleLogWeight}
+          style={{ fontFamily:"var(--font-mono)", fontSize:11, letterSpacing:0.14, textTransform:"uppercase", padding:"11px 16px", background:"var(--ink)", color:"var(--paper)", border:"none", cursor:"pointer" }}>Log</button>
+      </div>
+      {bodyLog.length > 0 && (
+        <div style={{ display:"flex", flexDirection:"column", gap:0 }}>
+          {[...bodyLog].reverse().slice(0,12).map((entry,i,arr)=>{
+            const d=new Date(entry.date);
+            const dateStr=d.toLocaleDateString("en-AU",{day:"numeric",month:"short"});
+            const prev=arr[i+1];
+            const diff=prev?entry.kg-prev.kg:null;
+            return (
+              <div key={entry.date} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"9px 0", borderBottom:"1px solid var(--rule)" }}>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:10.5, color:"var(--ink-60)", letterSpacing:0.08 }}>{dateStr}</span>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:13, fontVariantNumeric:"tabular-nums" }}>
+                  {entry.kg} kg
+                  {diff!==null && <span style={{ marginLeft:10, fontSize:10.5, color:diff<0?"var(--success)":diff>0?"var(--accent)":"var(--ink-60)" }}>{diff>0?"+":""}{diff.toFixed(1)}</span>}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+Object.assign(window, { Dashboard, DayScreen, AnalyticsScreen, PaywallModal, computeProgress });
 </script>
 
 <!-- ═══ APP ═══ -->
@@ -533,11 +904,17 @@ const TYPE_PAIRS = {
   "editorial":   { display:`"EB Garamond",Georgia,serif`, body:`"EB Garamond",Georgia,serif`, mono:`"IBM Plex Mono",ui-monospace,monospace` },
 };
 
-const EMPTY_SPLITS = { pushPull:[] };
 const INITIAL_STATE = {
-  activeSplit: "pushPull",
-  completions:   { ...EMPTY_SPLITS },
-  completedDays: { ...EMPTY_SPLITS },
+  activeSplit:   "pushPull",
+  completions:   { pushPull:[], upperLower:[], fullBody:[], custom:[] },
+  completedDays: { pushPull:[], upperLower:[], fullBody:[], custom:[] },
+  setsLog:       { pushPull:{}, upperLower:{}, fullBody:{}, custom:{} },
+  hiddenSlots:   { pushPull:{}, upperLower:{}, fullBody:{}, custom:{} },
+  customPlan:    { days:[] },
+  detailedMode:  false,
+  isPro:         false,
+  weekHistory:   [],
+  bodyLog:       [],
 };
 
 function loadState() {
@@ -545,13 +922,19 @@ function loadState() {
     const s = localStorage.getItem("tl-state");
     if (!s) return INITIAL_STATE;
     const parsed = JSON.parse(s);
-    // Guard: if old format (completions was array), reset
     if (Array.isArray(parsed.completions)) return INITIAL_STATE;
     const activeSplit = SPLITS[parsed.activeSplit] ? parsed.activeSplit : "pushPull";
     return {
       activeSplit,
-      completions:   { ...EMPTY_SPLITS, ...(parsed.completions   || {}) },
-      completedDays: { ...EMPTY_SPLITS, ...(parsed.completedDays || {}) },
+      completions:   { ...INITIAL_STATE.completions,   ...(parsed.completions   || {}) },
+      completedDays: { ...INITIAL_STATE.completedDays, ...(parsed.completedDays || {}) },
+      setsLog:       { ...INITIAL_STATE.setsLog,       ...(parsed.setsLog       || {}) },
+      hiddenSlots:   { ...INITIAL_STATE.hiddenSlots,   ...(parsed.hiddenSlots   || {}) },
+      customPlan:    parsed.customPlan    || { days:[] },
+      detailedMode:  parsed.detailedMode  || false,
+      isPro:         parsed.isPro         || false,
+      weekHistory:   parsed.weekHistory   || [],
+      bodyLog:       parsed.bodyLog       || [],
     };
   } catch { return INITIAL_STATE; }
 }
@@ -560,10 +943,15 @@ function reducer(state, action) {
   const split = action.split || state.activeSplit;
   const sc = state.completions[split] || [];
   const sd = state.completedDays[split] || [];
+  const ss = state.setsLog[split] || {};
+  const sh = state.hiddenSlots[split] || {};
 
   switch(action.type) {
     case "SET_SPLIT":
       return { ...state, activeSplit: action.split };
+
+    case "TOGGLE_DETAILED":
+      return { ...state, detailedMode: !state.detailedMode };
 
     case "CHECK":
       if (sc.some(c=>c.day===action.day && c.slot===action.slot)) return state;
@@ -583,28 +971,83 @@ function reducer(state, action) {
     case "REMOVE_EXTRA_BY_ID":
       return { ...state, completions: { ...state.completions, [split]:sc.filter(c=>!(c.day===action.day&&c.slot>=1000&&c.id===action.id)) }};
 
+    case "ADD_SET": {
+      const key = `${action.day}_${action.slot}`;
+      const cur = ss[key] || 0;
+      const next = cur >= action.target ? 0 : cur + 1;
+      return { ...state, setsLog: { ...state.setsLog, [split]: { ...ss, [key]: next } } };
+    }
+
+    case "HIDE_SLOT": {
+      const dayHidden = sh[action.day] || [];
+      if (dayHidden.includes(action.slot)) return state;
+      return { ...state, hiddenSlots: { ...state.hiddenSlots, [split]: { ...sh, [action.day]: [...dayHidden, action.slot] } } };
+    }
+
+    case "SHOW_SLOT": {
+      const dayHidden = sh[action.day] || [];
+      return { ...state, hiddenSlots: { ...state.hiddenSlots, [split]: { ...sh, [action.day]: dayHidden.filter(s=>s!==action.slot) } } };
+    }
+
+    case "UPGRADE_PRO":
+      return { ...state, isPro: true };
+
+    case "LOG_BODY_WEIGHT": {
+      const entry = { date: Date.now(), kg: action.kg };
+      return { ...state, bodyLog: [...(state.bodyLog||[]), entry] };
+    }
+
     case "COMPLETE_DAY": {
       const days = sd.includes(action.day) ? sd : [...sd, action.day];
-      const totalDays = SPLITS[split].days.length;
-      if (days.length >= totalDays) {
-        // Week complete — reset this split
+      const splitDays = split === 'custom' ? (state.customPlan?.days||[]) : (SPLITS[split]?.days||[]);
+      if (days.length >= splitDays.length) {
+        const weekEntry = { id: Date.now(), split, completedAt: Date.now(), completions: [...sc], setsLog: { ...ss } };
         return { ...state,
           completions:   { ...state.completions,   [split]:[] },
           completedDays: { ...state.completedDays, [split]:[] },
+          setsLog:       { ...state.setsLog,       [split]:{} },
+          hiddenSlots:   { ...state.hiddenSlots,   [split]:{} },
+          weekHistory:   [...(state.weekHistory||[]), weekEntry],
         };
       }
       return { ...state, completedDays: { ...state.completedDays, [split]:days } };
     }
-    case "RESET_DAY":
+
+    case "RESET_DAY": {
+      const newSets = { ...ss };
+      Object.keys(newSets).forEach(k => { if (k.startsWith(`${action.day}_`)) delete newSets[k]; });
+      const newHidden = { ...sh }; delete newHidden[action.day];
       return { ...state,
         completions:   { ...state.completions,   [split]:sc.filter(c=>c.day!==action.day) },
         completedDays: { ...state.completedDays, [split]:sd.filter(d=>d!==action.day) },
+        setsLog:       { ...state.setsLog,       [split]:newSets },
+        hiddenSlots:   { ...state.hiddenSlots,   [split]:newHidden },
       };
+    }
+
     case "RESET_SPLIT":
       return { ...state,
         completions:   { ...state.completions,   [split]:[] },
         completedDays: { ...state.completedDays, [split]:[] },
+        setsLog:       { ...state.setsLog,       [split]:{} },
+        hiddenSlots:   { ...state.hiddenSlots,   [split]:{} },
       };
+
+    case "ADD_CUSTOM_DAY": {
+      const newDays = [...(state.customPlan?.days||[]), { title:action.title, sub:"", main:[], other:[] }];
+      return { ...state, customPlan: { ...state.customPlan, days:newDays } };
+    }
+
+    case "REMOVE_CUSTOM_DAY": {
+      const newDays = (state.customPlan?.days||[]).filter((_,i)=>i!==action.index);
+      return { ...state, customPlan: { ...state.customPlan, days:newDays } };
+    }
+
+    case "RENAME_CUSTOM_DAY": {
+      const newDays = (state.customPlan?.days||[]).map((d,i)=>i===action.index?{...d,title:action.title}:d);
+      return { ...state, customPlan: { ...state.customPlan, days:newDays } };
+    }
+
     default: return state;
   }
 }
@@ -638,16 +1081,42 @@ function App() {
     "--font-display":p.display,"--font-body":p.body,"--font-mono":p.mono,
   };
 
+  const [showPaywall, setShowPaywall] = useStateApp(false);
   const navigate = r => setRoute(r);
+
+  const BottomNav = () => {
+    const tabs = [
+      { id:"home",      label:"Train",     icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="9" width="16" height="2.5" rx="1.25" fill="currentColor"/><rect x="5" y="5.5" width="2.5" height="9" rx="1.25" fill="currentColor"/><rect x="12.5" y="5.5" width="2.5" height="9" rx="1.25" fill="currentColor"/></svg> },
+      { id:"analytics", label:"Analytics", icon:<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="12" width="3" height="5" rx="1" fill="currentColor"/><rect x="8.5" y="8" width="3" height="9" rx="1" fill="currentColor"/><rect x="14" y="4" width="3" height="13" rx="1" fill="currentColor"/></svg> },
+    ];
+    return (
+      <div style={{ position:"fixed", bottom:0, left:0, right:0, zIndex:100, background:"var(--paper)", borderTop:"1px solid var(--rule)", display:"flex", paddingBottom:"env(safe-area-inset-bottom)" }}>
+        {tabs.map(t => {
+          const active = route.screen===t.id || (t.id==="home" && route.screen==="day");
+          return (
+            <button key={t.id} onClick={() => navigate({ screen:t.id })}
+              style={{ flex:1, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:4, padding:"10px 0 8px", background:"transparent", border:"none", cursor:"pointer", color:active?"var(--ink)":"var(--ink-60)", transition:"color 160ms" }}>
+              {t.icon}
+              <span style={{ fontFamily:"var(--font-mono)", fontSize:9, letterSpacing:0.18, textTransform:"uppercase" }}>{t.label}</span>
+            </button>
+          );
+        })}
+      </div>
+    );
+  };
+
   const renderScreen = () => {
-    if (route.screen==="day") return <DayScreen state={state} dispatch={dispatch} navigate={navigate} dayId={route.dayId}/>;
-    return <Dashboard state={state} dispatch={dispatch} navigate={navigate}/>;
+    if (route.screen==="day") return <DayScreen state={state} dispatch={dispatch} navigate={navigate} dayId={route.dayId} isPro={state.isPro} setShowPaywall={setShowPaywall}/>;
+    if (route.screen==="analytics") return <AnalyticsScreen state={state} dispatch={dispatch} navigate={navigate}/>;
+    return <Dashboard state={state} dispatch={dispatch} navigate={navigate} setShowPaywall={setShowPaywall}/>;
   };
 
   if (isStandalone) {
     return (
-      <div style={{ minHeight:"100vh", background:"var(--paper)", paddingTop:"env(safe-area-inset-top)", paddingBottom:"env(safe-area-inset-bottom)", ...cssVars }}>
+      <div style={{ minHeight:"100vh", background:"var(--paper)", paddingTop:"env(safe-area-inset-top)", ...cssVars }}>
         <div style={{ paddingTop:12 }}>{renderScreen()}</div>
+        <BottomNav/>
+        {showPaywall && <PaywallModal onClose={()=>setShowPaywall(false)} onUpgrade={()=>{ dispatch({type:"UPGRADE_PRO"}); setShowPaywall(false); }}/>}
       </div>
     );
   }
@@ -661,8 +1130,10 @@ function App() {
       display:"flex", alignItems:"center", justifyContent:"center", padding:"40px 20px", ...cssVars,
     }}>
       <IOSDevice width={390} height={844} dark={tweaks.variant==="ink"}>
-        <div style={{ minHeight:"100%", background:"var(--paper)", paddingTop:54 }}>
+        <div style={{ minHeight:"100%", background:"var(--paper)", paddingTop:54, position:"relative" }}>
           {renderScreen()}
+          <BottomNav/>
+          {showPaywall && <PaywallModal onClose={()=>setShowPaywall(false)} onUpgrade={()=>{ dispatch({type:"UPGRADE_PRO"}); setShowPaywall(false); }}/>}
         </div>
       </IOSDevice>
       {!tweaksOn && <div style={{ position:"fixed", bottom:20, left:20, fontFamily:"ui-monospace,monospace", fontSize:10, letterSpacing:0.14, textTransform:"uppercase", color:"rgba(0,0,0,0.4)", pointerEvents:"none" }}>Training Log</div>}
